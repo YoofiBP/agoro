@@ -414,23 +414,21 @@
 					<div class="wrap-slick3-dots"></div>
 
 					<div class="slick3">
-						<div class="item-slick3" data-thumb="images/thumb-item-01.jpg">
-							<div class="wrap-pic-w">
-								<img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
-							</div>
-						</div>
-
-						<div class="item-slick3" data-thumb="images/thumb-item-02.jpg">
-							<div class="wrap-pic-w">
-								<img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
-							</div>
-						</div>
-
-						<div class="item-slick3" data-thumb="images/thumb-item-03.jpg">
-							<div class="wrap-pic-w">
-								<img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
-							</div>
-						</div>
+						<?php
+						   if (isset($pid)) {
+						     $v->displaySinglePic($work);
+						   } 
+						?>
+						<?php
+						   if (isset($pid)) {
+						     $v->displaySinglePic1($work);
+						   } 
+						?>
+						<?php
+						   if (isset($pid)) {
+						     $v->displaySinglePic2($work);
+						   } 
+						?>
 					</div>
 				</div>
 			</div>

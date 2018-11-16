@@ -5,7 +5,7 @@ class Databases {
 	public $conn;
 
 	public function __construct(){
-		$this->conn = mysqli_connect("localhost", "root", "", "shoppn");
+		$this->conn = mysqli_connect("localhost", "root", "", "agoro");
 		if (!$this->conn) {
 			echo "Database Connection Error" . mysqli_connect_error($this->conn);
 			return;
@@ -118,15 +118,6 @@ class Databases {
 		$result = mysqli_query($this->conn, $sql);
 		$cart = mysqli_fetch_all($result,MYSQLI_ASSOC);
 		//print_r($cart);
-		echo "<tr>
-                <th>Item No.</th>
-                <th>Image</th>
-                <th>Product Title</th>
-                <th>Unit Pice</th>
-                <th>Quantity</th>
-                <th>Sub Total</th>
-                <th>Action</th>
-              </tr>";
 		for ($i=0; $i < count($cart); $i++){
 			$itemNum = $i + 1;
 			$cartItem = $cart[$i]; //get a current cart item
@@ -363,7 +354,7 @@ class Databases {
 	}
 
 	public function displaySingle($myPID){
-		$string = "SELECT product_id,product_cat,product_title,product_price,product_image,product_desc FROM products WHERE product_id=".$myPID;
+		$string = "SELECT product_id,product_cat,product_title,product_price,product_image,product_image1,product_image2,product_desc FROM products WHERE product_id=".$myPID;
 		$result = mysqli_query($this->conn, $string);
 		$mr = mysqli_fetch_assoc($result);
 		return $mr;
@@ -386,7 +377,31 @@ class Databases {
 	public function displaySinglePic($myArray){
 		$image = $myArray['product_image'];
 		$title = $myArray['product_title'];
-		echo "<img id='im1' src=".$image." alt='".$title." onclick='displayIMG(this);'>";
+		echo '<div class="item-slick3" data-thumb="'.$image.'">
+				<div class="wrap-pic-w">
+					<img src="'.$image.'" alt="IMG-PRODUCT">
+				</div>
+			</div>';
+		return;
+	}
+	public function displaySinglePic1($myArray){
+		$image = $myArray['product_image1'];
+		$title = $myArray['product_title'];
+		echo '<div class="item-slick3" data-thumb="'.$image.'">
+				<div class="wrap-pic-w">
+					<img src="'.$image.'" alt="IMG-PRODUCT">
+				</div>
+			</div>';
+		return;
+	}
+	public function displaySinglePic2($myArray){
+		$image = $myArray['product_image2'];
+		$title = $myArray['product_title'];
+		echo '<div class="item-slick3" data-thumb="'.$image.'">
+				<div class="wrap-pic-w">
+					<img src="'.$image.'" alt="IMG-PRODUCT">
+				</div>
+			</div>';
 		return;
 	}
 	public function displaySingleBC($myArray){
