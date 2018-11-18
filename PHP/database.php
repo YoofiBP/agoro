@@ -33,7 +33,11 @@ class Databases {
 			return;
 		}else{
 			if ($this->insert("cart",$data)) {
-				$success_message = 'Item has been added to cart successful';
+				$sql2 = "SELECT product_title FROM products WHERE product_id =".$pidCheck;
+				$q2 = mysqli_query($this->conn,$sql2);
+				$ar = mysqli_fetch_assoc($q2);
+				$title = $ar['product_title'];
+				$success_message = $title .' was added to your cart successfully';
 				echo $success_message;
 				return;
 			}
@@ -112,7 +116,7 @@ class Databases {
 			return $totalValue;
 		}
 	}
-	public function displayCartItems(){
+	public function displayCartItems($page){
 		$ipCheck = $_SERVER['REMOTE_ADDR'];
 		$sql = "SELECT p_id,qty FROM cart WHERE ip_add ='".$ipCheck."'";
 		$result = mysqli_query($this->conn, $sql);
@@ -144,30 +148,46 @@ class Databases {
 			/*echo $itemImage;
 			echo "<br>";
 			echo "<hr>";*/
-			echo "<tr id='item_".$itemID."'>
-                <td>".$itemNum."</td>
-                <td>
-                  <img src='".$itemImage."'>
-                </td>
-                <td id='title_".$itemID."'>".$itemTitle."
-                <br>
-                	<a id='topage' href='Product.php?p=".$itemID."'>View item</a>
-                </td>
-                <td>$".$itemPrice."</td>
-                <td id='qty'>
-                  <p id='currentQTY_".$itemID."'>".$itemQTY."</p>
-                  <div id='editQTY_".$itemID."' style='display: none;'>
-                    <input id='changeQTY_".$itemID."' type='number' name='quantity' min='1' max='5' required='' >
-                    <input type='submit' name='cQTY' value='Done' onclick='changeItemQTY(".$itemID.",document.getElementById(".'"'."changeQTY_".$itemID.'"'.").value);displayCurrentQTY(".$itemID.")'>
-                  </div>
-                </td>
-                <td>$".$itemSubTotal."</td>
-                <td>
-                  <button id='edit' onclick='return displayChangeQTY(".$itemID.")'>edit quantity</button>
-                  <br>
-                  <button id='remove' onclick='removeItemCart(".$itemID.",".'"'.$itemTitle.'"'.");displayCart()'>remove item</button>
-                </td>
-              </tr>";
+			if ($page == 'other') {
+				echo '
+				  <li class="header-cart-item">
+				  	<div class="header-cart-item-img">
+				  		<img src="'.$itemImage.'" alt="IMG">
+				  	</div>
+
+				  	<div class="header-cart-item-txt">
+				  		<a href="product-detail.php?p='.$itemID.'" class="header-cart-item-name">'.$itemTitle.'</a>
+
+				  		<span class="header-cart-item-info">'.$itemQTY.' x GHC '.$itemPrice.'</span>
+				  	</div>
+				  </li>
+				  ';
+			}elseif ($page == 'cart') {
+				echo '<tr class="table-row">
+					<td class="column-1">
+						<div class="cart-img-product b-rad-4 o-f-hidden">
+							<img src="'.$itemImage.'" alt="IMG-PRODUCT">
+						</div>
+					</td>
+					<td class="column-2">'.$itemTitle.'</td>
+					<td class="column-3">GHC '.$itemPrice.'</td>
+					<td class="column-4">
+						<div class="flex-w bo5 of-hidden w-size17">
+							<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
+								<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
+							</button>
+
+							<input class="size8 m-text18 t-center num-product" type="number" name="num-product1" value="'.$itemQTY.'">
+
+							<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
+								<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
+							</button>
+						</div>
+					</td>
+					<td class="column-5">GHC '.$itemSubTotal.'</td>
+				</tr>';
+			}
+            
 		}
 		return;
 	}
@@ -201,6 +221,70 @@ class Databases {
 	public function getPCatalogue(){
 		$string = "SELECT product_id,product_cat,product_title,product_price,product_image FROM products";
 		$result = mysqli_query($this->conn, $string);
+		$mray=mysqli_fetch_all($result,MYSQLI_ASSOC);
+		
+		for ($i=0; $i < count($mray); $i++) { 
+			/*$b = $i+1;*/
+			$pfocus = $mray[$i];
+			$pid = $pfocus['product_id'];
+			//echo "This is the product id: " . $pid;
+			$title = $pfocus['product_title'];
+			/*echo "This is the title: " . $title;
+			echo "<br>";*/
+			$price = $pfocus['product_price'];
+			/*echo "This is the price: " . $price;
+			echo "<br>";*/
+			$image = $pfocus['product_image'];
+			/*echo "This is the image: " . $image;
+			echo "<br>";*/
+			$category = $this->getCategory($pfocus['product_cat']);
+			/*echo "This is the category: " . $category;
+			echo "<br>";*/
+			//if ($i == count($mray)-1 && $b%3 == 1) {
+				echo '<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
+							<!-- Block2 -->
+							<div class="block2">
+								<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+									<img src="'.$image.'" alt="IMG-PRODUCT">
+
+									<div class="block2-overlay trans-0-4">
+										<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+											<i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+											<i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
+										</a>
+
+										<div class="block2-btn-addcart w-size1 trans-0-4">
+											<!-- Button -->
+											<p id="pid" style="display:none">'.$pid.'</p>
+											<p id="qty" style="display:none">1</p>
+											<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+												Add to Cart
+											</button>
+										</div>
+									</div>
+								</div>
+
+								<div class="block2-txt p-t-20">
+									<a href="product-detail.php?p='.$pid.'" class="block2-name dis-block s-text3 p-b-5">
+										'.$title.'
+									</a>
+
+									<span class="block2-price m-text6 p-r-5">
+										GHC '.$price.'
+									</span>
+								</div>
+							</div>
+						</div>';
+		}
+		return;
+	}
+	public function getProductCatalogueByPriceFilter($min, $max){
+		$string = "SELECT product_id,product_cat,product_title,product_price,product_image FROM products WHERE product_price BETWEEN ".$min." AND ".$max;
+		$result = mysqli_query($this->conn, $string);
+		if (!$result) {
+		    printf("Error: %s\n", mysqli_error($this->conn));
+		    exit();
+		}
 		$mray=mysqli_fetch_all($result,MYSQLI_ASSOC);
 		
 		for ($i=0; $i < count($mray); $i++) { 

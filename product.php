@@ -32,6 +32,9 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+<?php
+include 'PHP/database.php';
+?>
 </head>
 <body class="animsition">
 
@@ -78,23 +81,10 @@
 						<ul class="main_menu">
 							<li>
 								<a href="index.html">Home</a>
-								<ul class="sub_menu">
-									<li><a href="index.html">Homepage V1</a></li>
-									<li><a href="home-02.html">Homepage V2</a></li>
-									<li><a href="home-03.html">Homepage V3</a></li>
-								</ul>
 							</li>
 
 							<li>
-								<a href="product.html">Shop</a>
-							</li>
-
-							<li class="sale-noti">
-								<a href="product.html">Sale</a>
-							</li>
-
-							<li>
-								<a href="cart.html">Features</a>
+								<a href="product.php">Shop</a>
 							</li>
 
 							<li>
@@ -127,53 +117,10 @@
 						<!-- Header cart noti -->
 						<div class="header-cart header-dropdown">
 							<ul class="header-cart-wrapitem">
-								<li class="header-cart-item">
-									<div class="header-cart-item-img">
-										<img src="images/item-cart-01.jpg" alt="IMG">
-									</div>
-
-									<div class="header-cart-item-txt">
-										<a href="#" class="header-cart-item-name">
-											White Shirt With Pleat Detail Back
-										</a>
-
-										<span class="header-cart-item-info">
-											1 x $19.00
-										</span>
-									</div>
-								</li>
-
-								<li class="header-cart-item">
-									<div class="header-cart-item-img">
-										<img src="images/item-cart-02.jpg" alt="IMG">
-									</div>
-
-									<div class="header-cart-item-txt">
-										<a href="#" class="header-cart-item-name">
-											Converse All Star Hi Black Canvas
-										</a>
-
-										<span class="header-cart-item-info">
-											1 x $39.00
-										</span>
-									</div>
-								</li>
-
-								<li class="header-cart-item">
-									<div class="header-cart-item-img">
-										<img src="images/item-cart-03.jpg" alt="IMG">
-									</div>
-
-									<div class="header-cart-item-txt">
-										<a href="#" class="header-cart-item-name">
-											Nixon Porter Leather Watch In Tan
-										</a>
-
-										<span class="header-cart-item-info">
-											1 x $17.00
-										</span>
-									</div>
-								</li>
+								<?php 
+								$forcart = new Databases;
+								$forcart->displayCartItems('other');
+								?>
 							</ul>
 
 							<div class="header-cart-total">
@@ -183,7 +130,7 @@
 							<div class="header-cart-buttons">
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->
-									<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+									<a href="cart.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 										View Cart
 									</a>
 								</div>
@@ -351,15 +298,7 @@
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="product.html">Shop</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="product.html">Sale</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="cart.html">Features</a>
+						<a href="product.php">Shop</a>
 					</li>
 
 					<li class="item-menu-mobile">
@@ -449,7 +388,7 @@
 							<div class="flex-sb-m flex-w p-t-16">
 								<div class="w-size11">
 									<!-- Button -->
-									<button class="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4">
+									<button class="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4" onclick="filterPrice(document.getElementById('value-lower').innerHTML, document.getElementById('value-upper').innerHTML)">
 										Filter
 									</button>
 								</div>
@@ -545,9 +484,8 @@
 					</div>
 
 					<!-- Product -->
-					<div class="row">
-						<?php
-							include 'PHP/database.php'; 
+					<div id="pclocation" class="row">
+						<?php 
 							$pr = new Databases;
 							$pr->getPCatalogue();
 						?>
@@ -780,8 +718,19 @@
 	<script type="text/javascript">
 		$('.block2-btn-addcart').each(function(){
 			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+			var $pid = $(this).find('#pid').html();
+			var $qty = $(this).find('#qty').html();
+			/*console.log($pid);
+			console.log($qty);*/
 			$(this).on('click', function(){
-				swal(nameProduct, "is added to cart !", "success");
+				$.ajax({
+					type: 'POST',
+					url: 'PHP/addtocart.php',
+					data: {pid: $pid, qty: $qty},
+					success: function(sMessage){
+						swal(sMessage);					
+					}
+				});
 			});
 		});
 
@@ -801,11 +750,11 @@
 	    var filterBar = document.getElementById('filter-bar');
 
 	    noUiSlider.create(filterBar, {
-	        start: [ 50, 200 ],
+	        start: [ 50, 300 ],
 	        connect: true,
 	        range: {
 	            'min': 50,
-	            'max': 200
+	            'max': 400
 	        }
 	    });
 
@@ -814,9 +763,24 @@
 	    document.getElementById('value-upper')
 	    ];
 
-	    filterBar.noUiSlider.on('update', function( values, handle ) {
+	    filterBar.noUiSlider.on('update', function(values, handle ) {
 	        skipValues[handle].innerHTML = Math.round(values[handle]) ;
 	    });
+	
+		function filterPrice(min,max) {
+			console.log(min);
+			console.log(max);
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var myObj = this.responseText;
+					document.getElementById('pclocation').innerHTML = myObj;	
+					
+				}
+			};
+			xhttp.open("GET", "PHP/priceSLiderFilter.php?min="+min+"&max="+max, true);
+			xhttp.send();
+		}
 	</script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
