@@ -298,25 +298,25 @@ include 'PHP/database.php';
 
 							<li class="p-t-4">
 								<a href="#" class="s-text13">
-									Women
+									Xbox
 								</a>
 							</li>
 
 							<li class="p-t-4">
 								<a href="#" class="s-text13">
-									Men
+									PlayStation
 								</a>
 							</li>
 
 							<li class="p-t-4">
 								<a href="#" class="s-text13">
-									Kids
+									Windows
 								</a>
 							</li>
 
 							<li class="p-t-4">
 								<a href="#" class="s-text13">
-									Accesories
+									OSX
 								</a>
 							</li>
 						</ul>
