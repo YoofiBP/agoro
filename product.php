@@ -268,12 +268,12 @@ include 'PHP/database.php';
 	</header>
 
 	<!-- Title Page -->
-	<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url(images/heading-pages-02.jpg);">
+	<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url(images/cartt.jpeg);">
 		<h2 class="l-text2 t-center">
-			Women
+			Products
 		</h2>
 		<p class="m-text13 t-center">
-			New Arrivals Women Collection 2018
+			New Arrivals Package 2018
 		</p>
 	</section>
 
