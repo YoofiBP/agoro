@@ -72,7 +72,7 @@ include 'PHP/database.php';
 			<div class="wrap_header">
 				<!-- Logo -->
 				<a href="index.html" class="logo">
-					<img src="images/icons/logo.png" alt="IMG-LOGO">
+					<img src="images/AGORO.png" alt="IMG-LOGO">
 				</a>
 
 				<!-- Menu -->
@@ -152,7 +152,7 @@ include 'PHP/database.php';
 		<div class="wrap_header_mobile">
 			<!-- Logo moblie -->
 			<a href="index.html" class="logo-mobile">
-				<img src="images/icons/logo.png" alt="IMG-LOGO">
+				<img src="images/AGORO.png" alt="IMG-LOGO">
 			</a>
 
 			<!-- Button show menu -->
@@ -298,25 +298,25 @@ include 'PHP/database.php';
 
 							<li class="p-t-4">
 								<a href="#" class="s-text13">
-									Women
+									Xbox
 								</a>
 							</li>
 
 							<li class="p-t-4">
 								<a href="#" class="s-text13">
-									Men
+									PlayStation
 								</a>
 							</li>
 
 							<li class="p-t-4">
 								<a href="#" class="s-text13">
-									Kids
+									Windows
 								</a>
 							</li>
 
 							<li class="p-t-4">
 								<a href="#" class="s-text13">
-									Accesories
+									OSX
 								</a>
 							</li>
 						</ul>
