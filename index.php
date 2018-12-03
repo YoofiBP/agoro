@@ -481,7 +481,7 @@ session_start();
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
-								<img src="images/games/xbox/fantasy/witcher.jpg" alt="IMG-PRODUCT">
+								<img src="images/games/ps4/simulation/uncharted.jpeg" alt="IMG-PRODUCT">
 
 								<div class="block2-overlay trans-0-4">
 									<a href="product.php" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -491,8 +491,14 @@ session_start();
 
 									<div class="block2-btn-addcart w-size1 trans-0-4">
 										<!-- Button -->
+
+										<p id="pid" style="display:none">4</p>
+										<p id="qty" style="display:none">1</p>
+
+
+
 										<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											Shop Now
+											Add to Cart
 										</button>
 									</div>
 								</div>
@@ -500,7 +506,7 @@ session_start();
 
 							<div class="block2-txt p-t-20">
 								<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-									The Witcher Wild Hunt
+										Uncharted 4 : A Thief's End
 								</a>
 
 								<span class="block2-oldprice m-text7 p-r-5">
@@ -527,7 +533,17 @@ session_start();
 									</a>
 
 									<div class="block2-btn-addcart w-size1 trans-0-4">
+
+
 										<!-- Button -->
+
+
+										<p id="pid" style="display:none">9</p>
+										<p id="qty" style="display:none">1</p>
+
+
+
+
 										<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
 											Add to Cart
 										</button>
@@ -551,7 +567,7 @@ session_start();
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src="images/games/ps4/fantasy/deus.jpg" alt="IMG-PRODUCT">
+								<img src="images/games/xbox/sports/ufc.jpg" alt="IMG-PRODUCT">
 
 								<div class="block2-overlay trans-0-4">
 									<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -561,6 +577,8 @@ session_start();
 
 									<div class="block2-btn-addcart w-size1 trans-0-4">
 										<!-- Button -->
+										<p id="pid" style="display:none">10</p>
+										<p id="qty" style="display:none">1</p>
 										<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
 											Add to Cart
 										</button>
@@ -570,7 +588,7 @@ session_start();
 
 							<div class="block2-txt p-t-20">
 								<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-									Deus Ex : Edition One
+									UFC 3
 								</a>
 
 								<span class="block2-price m-text6 p-r-5">
@@ -584,7 +602,7 @@ session_start();
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src="images/games/ps4/simulation/nfs.jpg" alt="IMG-PRODUCT">
+								<img src="images/games/xbox/simulation/fortnite.jpg" alt="IMG-PRODUCT">
 
 								<div class="block2-overlay trans-0-4">
 									<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
@@ -594,6 +612,13 @@ session_start();
 
 									<div class="block2-btn-addcart w-size1 trans-0-4">
 										<!-- Button -->
+
+
+										<p id="pid" style="display:none">11</p>
+										<p id="qty" style="display:none">1</p>
+
+
+
 										<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
 											Add to Cart
 										</button>
@@ -603,7 +628,7 @@ session_start();
 
 							<div class="block2-txt p-t-20">
 								<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-									Need For Speed : Rival
+									Fornite
 								</a>
 
 								<span class="block2-price m-text6 p-r-5">
@@ -627,6 +652,14 @@ session_start();
 
 									<div class="block2-btn-addcart w-size1 trans-0-4">
 										<!-- Button -->
+
+
+										<p id="pid" style="display:none">6</p>
+										<p id="qty" style="display:none">1</p>
+
+
+
+
 										<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
 											Add to Cart
 										</button>
@@ -918,7 +951,7 @@ session_start();
 	<!--===============================================================================================-->
 	<script src="js/main.js"></script>
 	<script src="js/agoro.js"></script>
-
+	<script type="text/javascript" src="js/cart.js"></script>
 </body>
 
 </html>
