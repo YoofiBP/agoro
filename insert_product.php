@@ -1,44 +1,53 @@
 <?php
 session_start();
  ?>
+<?php
+include 'includes/classes/dbh.php';
+include 'includes/classes/brands.php';
+include 'includes/classes/categories.php';
+include 'includes/classes/products.php';
+include 'includes/validations/validate_product_insert.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<title>Product</title>
+	<title>Home</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.png" />
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/themify/themify-icons.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/elegant-font/html-css/style.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/noui/nouislider.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/lightbox2/css/lightbox.min.css">
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
-<?php
-include 'PHP/database.php';
-?>
+	<!--===============================================================================================-->
 </head>
+
 <body class="animsition" onload="displayCartItems();displayCartSize();displayCartValue()">
 
 	<!-- Header -->
@@ -75,7 +84,7 @@ include 'PHP/database.php';
 			<div class="wrap_header">
 				<!-- Logo -->
 				<a href="index.html" class="logo">
-					<img src="images/AGORO.png" alt="IMG-LOGO">
+					<img src="images/icons/logo.png" alt="IMG-LOGO">
 				</a>
 
 				<!-- Menu -->
@@ -104,11 +113,11 @@ include 'PHP/database.php';
 							<?php
 							if(isset($_SESSION['id'])){
 							echo "<li><a href='logout.php'>Logout</a></li>";
-              echo "<li><a href='insert_product.php'>New</a></li>";
+							echo "<li><a href='insert_product.php'>New</a></li>";
 							}
 							else{
 							echo "<li><a href='login.php'>Login</a></li>";
-              echo "<li><a href='registration.php'>Sign Up</a></li>";
+							echo "<li><a href='registration.php'>Sign Up</a></li>";
 							}
 							 ?>
 						</ul>
@@ -130,10 +139,7 @@ include 'PHP/database.php';
 						<!-- Header cart noti -->
 						<div class="header-cart header-dropdown">
 							<ul class="header-cart-wrapitem">
-								<?php
-								$forcart = new Databases;
-								$forcart->displayCartItems('other');
-								?>
+								<!-- header cart goes here -->
 							</ul>
 
 							<div class="header-cart-total">
@@ -143,7 +149,7 @@ include 'PHP/database.php';
 							<div class="header-cart-buttons">
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->
-									<a href="cart.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+									<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 										View Cart
 									</a>
 								</div>
@@ -165,7 +171,7 @@ include 'PHP/database.php';
 		<div class="wrap_header_mobile">
 			<!-- Logo moblie -->
 			<a href="index.html" class="logo-mobile">
-				<img src="images/AGORO.png" alt="IMG-LOGO">
+				<img src="images/icons/logo.png" alt="IMG-LOGO">
 			</a>
 
 			<!-- Button show menu -->
@@ -185,9 +191,7 @@ include 'PHP/database.php';
 						<!-- Header cart noti -->
 						<div class="header-cart header-dropdown">
 							<ul class="header-cart-wrapitem">
-								<?php
-								$forcart->displayCartItems('other');
-								?>
+								<!-- mobile header cart goes here -->
 							</ul>
 
 							<div class="header-cart-total">
@@ -222,7 +226,7 @@ include 'PHP/database.php';
 		</div>
 
 		<!-- Menu Mobile -->
-		<div class="wrap-side-menu" >
+		<div class="wrap-side-menu">
 			<nav class="side-menu">
 				<ul class="main-menu">
 					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
@@ -234,7 +238,7 @@ include 'PHP/database.php';
 					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
 						<div class="topbar-child2-mobile">
 							<span class="topbar-email">
-								fashe@example.com
+								allstar@example.com
 							</span>
 
 							<div class="topbar-language rs1-select2">
@@ -280,192 +284,152 @@ include 'PHP/database.php';
 		</div>
 	</header>
 
-	<!-- Title Page -->
-	<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url(images/cartt.jpeg);">
-		<h2 class="l-text2 t-center">
-			<?php echo "Search results for: ".$_GET['sea'];?>
-		</h2>
-		<p class="m-text13 t-center">
-			New Arrivals Package 2018
+	<!-- Registration Form -->
+	<form action="registration.php" method="post" onsubmit="return validation();">
+		<h2>Insert Product</h2>
+		<p>
+			<label for=title class="floatLabel">Product Name</label>
+			<input id="title" name="title" type="text" value="<?=@$title?>">*<?php echo $title_error;?>
 		</p>
-	</section>
+		<p>
+			<select name="cat" id="cat">
+				<option value="0">Choose Category</option>
+				<?php
+				$cat = new Category();
+				$cat->dropDownCats();
+				?>
+			</select>*<?php echo $category_error;?>
+		</p>
+		<p>
+			<select name="brand" id="brand">
+				<option value="0">Choose Brand</option>
+				<?php
+				$brand = new Brand();
+				$brand->dropDownBrands();
+				?>
+			</select>*<?php echo $brand_error;?>
+		</p>
+		<p>
+			<label for="price" class="floatLabel">Product Price</label>
+			<br>
+			<input value="<?=@$price?>" id="price" name="price" type="number">*<?php echo $price_error;?>
+		</p>
+		<p>
+			<label for="descr" class="floatLabel">Product Description</label>
+			<input  value="<?=@$description?>" id="descr" name="descr" type="text">*<?php echo $description_error;?>
+		</p>
+		<p>
+			<label for="image" class="floatLabel">Upload Product Images</label>
+			<br>
+			<input id="image" name="image" type="file">*<?php echo $file_error;?>
+		</p>
+		<p>
+			<label for="keywords" class="floatLabel">Enter keywords</label>
+			<input value="<?=@$key_words?>" id="keywords" name="keywords" type="text">*<?php echo $keyword_error;?>
+		</p>
+		<p>
+			<input type="submit" value="Create My Account" id="submit" name="submit">
+		</p>
+	</form>
+	<!--  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> -->
+
+	<style>
+
+		body {
+  background: #384047;
+  font-family: sans-serif;
+  font-size: 10px;
+}
+
+form {
+  background: #fff;
+  padding: 4em 4em 2em;
+  max-width: 400px;
+  margin: 20px auto 0;
+  box-shadow: 0 0 1em #222;
+  border-radius: 2px;
+  border: 2px solid black;
+
+}
+form h2 {
+  margin: 0 0 50px 0;
+  padding: 10px;
+  text-align: center;
+  font-size: 30px;
+  color: #666666;
+  border-bottom: solid 1px #e5e5e5;
+}
+form p {
+  margin: 0 0 3em 0;
+  position: relative;
+}
+form input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  outline: none;
+  margin: 0;
+}
+form input[type="text"],
+form input[type="password"] {
+  background: #fff;
+  border: 1px solid #dbdbdb;
+  font-size: 1.6em;
+  padding: .8em .5em;
+  border-radius: 2px;
+}
+form input[type="text"]:focus,
+form input[type="password"]:focus {
+  background: #fff;
+}
+form span {
+  display: block;
+  background: #F9A5A5;
+  padding: 2px 5px;
+  color: #666;
+}
+form input[type="submit"] {
+  background: rgba(148, 186, 101, 0.7);
+  box-shadow: 0 3px 0 0 rgba(123, 163, 73, 0.7);
+  border-radius: 2px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 2em;
+  line-height: 1.6em;
+  margin: 2em 0 0;
+  outline: none;
+  padding: .8em 0;
+  text-shadow: 0 1px #68B25B;
+}
+form input[type="submit"]:hover {
+  background: #94af65;
+  text-shadow: 0 1px 3px rgba(70, 93, 41, 0.7);
+}
+form label {
+  position: absolute;
+  left: 8px;
+  top: 10px;
+  color: #999;
+  font-size: 16px;
+  display: inline-block;
+  padding: 4px 10px;
+  font-weight: 400;
+  background-color: rgba(255, 255, 255, 0);
+  -moz-transition: color 0.3s, top 0.3s, background-color 0.8s;
+  -o-transition: color 0.3s, top 0.3s, background-color 0.8s;
+  -webkit-transition: color 0.3s, top 0.3s, background-color 0.8s;
+  transition: color 0.3s, top 0.3s, background-color 0.8s;
+}
+form label.floatLabel {
+  top: -11px;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+}
 
 
-	<!-- Content page -->
-	<section class="bgwhite p-t-55 p-b-65">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-					<div class="leftbar p-r-20 p-r-0-sm">
-						<!--  -->
-						<h4 class="m-text14 p-b-7">
-							Categories
-						</h4>
-
-						<ul class="p-b-54">
-							<li class="p-t-4">
-								<a href="#" class="s-text13 active1">
-									All
-								</a>
-							</li>
-
-							<li class="p-t-4">
-								<a href="#" class="s-text13">
-									Xbox
-								</a>
-							</li>
-
-							<li class="p-t-4">
-								<a href="#" class="s-text13">
-									PlayStation
-								</a>
-							</li>
-
-							<li class="p-t-4">
-								<a href="#" class="s-text13">
-									Windows
-								</a>
-							</li>
-
-							<li class="p-t-4">
-								<a href="#" class="s-text13">
-									OSX
-								</a>
-							</li>
-						</ul>
-
-						<!--  -->
-						<h4 class="m-text14 p-b-32">
-							Filters
-						</h4>
-
-						<div class="filter-price p-t-22 p-b-50 bo3">
-							<div class="m-text15 p-b-17">
-								Price
-							</div>
-
-							<div class="wra-filter-bar">
-								<div id="filter-bar"></div>
-							</div>
-
-							<div class="flex-sb-m flex-w p-t-16">
-								<div class="w-size11">
-									<!-- Button -->
-									<button class="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4" onclick="filterPrice(document.getElementById('value-lower').innerHTML, document.getElementById('value-upper').innerHTML)">
-										Filter
-									</button>
-								</div>
-
-								<div class="s-text3 p-t-10 p-b-10">
-									Range: $<span id="value-lower">610</span> - $<span id="value-upper">980</span>
-								</div>
-							</div>
-						</div>
-
-						<div class="filter-color p-t-22 p-b-50 bo3">
-							<div class="m-text15 p-b-12">
-								Color
-							</div>
-
-							<ul class="flex-w">
-								<li class="m-r-10">
-									<input class="checkbox-color-filter" id="color-filter1" type="checkbox" name="color-filter1">
-									<label class="color-filter color-filter1" for="color-filter1"></label>
-								</li>
-
-								<li class="m-r-10">
-									<input class="checkbox-color-filter" id="color-filter2" type="checkbox" name="color-filter2">
-									<label class="color-filter color-filter2" for="color-filter2"></label>
-								</li>
-
-								<li class="m-r-10">
-									<input class="checkbox-color-filter" id="color-filter3" type="checkbox" name="color-filter3">
-									<label class="color-filter color-filter3" for="color-filter3"></label>
-								</li>
-
-								<li class="m-r-10">
-									<input class="checkbox-color-filter" id="color-filter4" type="checkbox" name="color-filter4">
-									<label class="color-filter color-filter4" for="color-filter4"></label>
-								</li>
-
-								<li class="m-r-10">
-									<input class="checkbox-color-filter" id="color-filter5" type="checkbox" name="color-filter5">
-									<label class="color-filter color-filter5" for="color-filter5"></label>
-								</li>
-
-								<li class="m-r-10">
-									<input class="checkbox-color-filter" id="color-filter6" type="checkbox" name="color-filter6">
-									<label class="color-filter color-filter6" for="color-filter6"></label>
-								</li>
-
-								<li class="m-r-10">
-									<input class="checkbox-color-filter" id="color-filter7" type="checkbox" name="color-filter7">
-									<label class="color-filter color-filter7" for="color-filter7"></label>
-								</li>
-							</ul>
-						</div>
-
-						<div class="search-product pos-relative bo4 of-hidden">
-							<input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search-product" placeholder="Search Products...">
-
-							<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
-								<i class="fs-12 fa fa-search" aria-hidden="true"></i>
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
-					<!--  -->
-					<div class="flex-sb-m flex-w p-b-35">
-						<div class="flex-w">
-							<div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-								<select class="selection-2" name="sorting">
-									<option>Default Sorting</option>
-									<option>Popularity</option>
-									<option>Price: low to high</option>
-									<option>Price: high to low</option>
-								</select>
-							</div>
-
-							<div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-								<select class="selection-2" name="sorting">
-									<option>Price</option>
-									<option>$0.00 - $50.00</option>
-									<option>$50.00 - $100.00</option>
-									<option>$100.00 - $150.00</option>
-									<option>$150.00 - $200.00</option>
-									<option>$200.00+</option>
-
-								</select>
-							</div>
-						</div>
-
-						<span class="s-text8 p-t-5 p-b-5">
-							Showing 1–12 of 16 results
-						</span>
-					</div>
-
-					<!-- Product -->
-					<div id="pclocation" class="row">
-						<?php
-							$pr = new Databases;
-							$sValue = $_GET['sea'];
-							$pr->getPCSearch($sValue);
-						?>
-
-
-					</div>
-
-					<!-- Pagination -->
-					<div class="pagination flex-m flex-w p-t-26">
-						<a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
-						<a href="#" class="item-pagination flex-c-m trans-0-4">2</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+  	</style>
 
 
 	<!-- Footer -->
@@ -645,93 +609,55 @@ include 'PHP/database.php';
 		</span>
 	</div>
 
-	<!-- Container Selection -->
+	<!-- Container Selection1 -->
 	<div id="dropDownSelect1"></div>
-	<div id="dropDownSelect2"></div>
 
 
 
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script type="text/javascript" src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script type="text/javascript" src="vendor/bootstrap/js/popper.js"></script>
 	<script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
+	<script type="text/javascript" src="js/cart.js"></script>
 	<script type="text/javascript" src="vendor/select2/select2.min.js"></script>
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		$(".selection-1").select2({
 			minimumResultsForSearch: 20,
 			dropdownParent: $('#dropDownSelect1')
 		});
-
-		$(".selection-2").select2({
-			minimumResultsForSearch: 20,
-			dropdownParent: $('#dropDownSelect2')
-		});
-	</script>
-<!--===============================================================================================-->
-	<script type="text/javascript" src="vendor/daterangepicker/moment.min.js"></script>
-	<script type="text/javascript" src="vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
+	</script> -->
+	<!--===============================================================================================-->
 	<script type="text/javascript" src="vendor/slick/slick.min.js"></script>
 	<script type="text/javascript" src="js/slick-custom.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
+	<script type="text/javascript" src="vendor/countdowntime/countdowntime.js"></script>
+	<!--===============================================================================================-->
+	<script type="text/javascript" src="vendor/lightbox2/js/lightbox.min.js"></script>
+	<!--===============================================================================================-->
 	<script type="text/javascript" src="vendor/sweetalert/sweetalert.min.js"></script>
-	<script type="text/javascript" src="js/cart.js"></script>
-	<script type="text/javascript">
-		$('.block2-btn-addwishlist').each(function(){
+	<!-- <script type="text/javascript">
+		$('.block2-btn-addcart').each(function() {
 			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-			$(this).on('click', function(){
+			$(this).on('click', function() {
+				swal(nameProduct, "is added to cart !", "success");
+			});
+		});
+
+		$('.block2-btn-addwishlist').each(function() {
+			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+			$(this).on('click', function() {
 				swal(nameProduct, "is added to wishlist !", "success");
 			});
 		});
-	</script>
+	</script> -->
 
-<!--===============================================================================================-->
-	<script type="text/javascript" src="vendor/noui/nouislider.min.js"></script>
-	<script type="text/javascript">
-		/*[ No ui ]
-	    ===========================================================*/
-	    var filterBar = document.getElementById('filter-bar');
-
-	    noUiSlider.create(filterBar, {
-	        start: [ 50, 300 ],
-	        connect: true,
-	        range: {
-	            'min': 50,
-	            'max': 400
-	        }
-	    });
-
-	    var skipValues = [
-	    document.getElementById('value-lower'),
-	    document.getElementById('value-upper')
-	    ];
-
-	    filterBar.noUiSlider.on('update', function(values, handle ) {
-	        skipValues[handle].innerHTML = Math.round(values[handle]) ;
-	    });
-
-		function filterPrice(min,max,searched) {
-			console.log(min);
-			console.log(max);
-			console.log(searched);
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					var myObj = this.responseText;
-					document.getElementById('pclocation').innerHTML = myObj;
-
-				}
-			};
-			xhttp.open("GET", "PHP/priceSLiderFilter.php?min="+min+"&max="+max, true);
-			xhttp.send();
-		}
-	</script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="js/main.js"></script>
-
+<script src="js/validations/insert_validation.js"></script>
 </body>
+
 </html>

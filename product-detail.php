@@ -1,3 +1,6 @@
+<?php
+session_start();
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +33,7 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
-<?php 
+<?php
    include 'PHP/database.php';
    $pid = $_GET['p'];
    if (isset($pid)) {
@@ -83,7 +86,7 @@
 					<nav class="menu">
 						<ul class="main_menu">
 							<li>
-								<a href="index.html">Home</a>
+								<a href="index.php">Home</a>
 							</li>
 
 							<li>
@@ -91,16 +94,26 @@
 							</li>
 
 							<li>
-								<a href="blog.html">Blog</a>
+								<a href="blog.php">Blog</a>
 							</li>
 
 							<li>
-								<a href="about.html">About</a>
+								<a href="about.php">About</a>
 							</li>
 
 							<li>
-								<a href="contact.html">Contact</a>
+								<a href="contact.php">Contact</a>
 							</li>
+							<?php
+							if(isset($_SESSION['id'])){
+							echo "<li><a href='logout.php'>Logout</a></li>";
+							echo "<li><a href='insert_product.php'>New</a></li>";
+							}
+							else{
+							echo "<li><a href='login.php'>Login</a></li>";
+							echo "<li><a href='registration.php'>Sign Up</a></li>";
+							}
+							 ?>
 						</ul>
 					</nav>
 				</div>
@@ -120,7 +133,7 @@
 						<!-- Header cart noti -->
 						<div class="header-cart header-dropdown">
 							<ul class="header-cart-wrapitem">
-								<?php  
+								<?php
 								$forcart = new Databases;
 								$forcart->displayCartItems('other');
 								?>
@@ -301,17 +314,17 @@
 						<?php
 						   if (isset($pid)) {
 						     $v->displaySinglePic($work);
-						   } 
+						   }
 						?>
 						<?php
 						   if (isset($pid)) {
 						     $v->displaySinglePic1($work);
-						   } 
+						   }
 						?>
 						<?php
 						   if (isset($pid)) {
 						     $v->displaySinglePic2($work);
-						   } 
+						   }
 						?>
 					</div>
 				</div>
@@ -441,7 +454,7 @@
 
 
 	<!-- Relate Product -->
-	
+
 
 	<!-- Footer -->
 	<footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">

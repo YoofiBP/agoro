@@ -1,3 +1,6 @@
+<?php
+session_start();
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +55,7 @@
 
 				<div class="topbar-child2">
 					<span class="topbar-email">
-						
+
 					</span>
 
 					<div class="topbar-language rs1-select2">
@@ -75,7 +78,7 @@
 					<nav class="menu">
 						<ul class="main_menu">
 							<li>
-								<a href="index.html">Home</a>
+								<a href="index.php">Home</a>
 							</li>
 
 							<li>
@@ -83,16 +86,26 @@
 							</li>
 
 							<li>
-								<a href="blog.html">Blog</a>
+								<a href="blog.php">Blog</a>
 							</li>
 
 							<li>
-								<a href="about.html">About</a>
+								<a href="about.php">About</a>
 							</li>
 
 							<li>
-								<a href="contact.html">Contact</a>
+								<a href="contact.php">Contact</a>
 							</li>
+							<?php
+							if(isset($_SESSION['id'])){
+							echo "<li><a href='logout.php'>Logout</a></li>";
+							echo "<li><a href='insert_product.php'>New</a></li>";
+							}
+							else{
+							echo "<li><a href='login.php'>Login</a></li>";
+							echo "<li><a href='registration.php'>Sign Up</a></li>";
+							}
+							 ?>
 						</ul>
 					</nav>
 				</div>
@@ -111,7 +124,7 @@
 					</div>
 
 
-					
+
 					<a href="#" class="header-wrapicon1 dis-block">
 						<img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
 					</a>
@@ -287,7 +300,7 @@
 	<!-- Title Page -->
 	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(images/about-banner.jpg);">
 		<h2 class="l-text2 t-center">
-			
+
 		</h2>
 	</section>
 
@@ -404,7 +417,7 @@
 						</a>
 					</li>
 
-				
+
 				</ul>
 			</div>
 
