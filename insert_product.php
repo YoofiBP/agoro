@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+ ?>
 <?php
 include 'includes/classes/dbh.php';
 include 'includes/classes/brands.php';
@@ -90,7 +92,7 @@ include 'includes/validations/validate_product_insert.php';
 					<nav class="menu">
 						<ul class="main_menu">
 							<li>
-								<a href="index.html">Home</a>
+								<a href="index.php">Home</a>
 							</li>
 
 							<li>
@@ -98,7 +100,7 @@ include 'includes/validations/validate_product_insert.php';
 							</li>
 
 							<li>
-								<a href="blog.html">Blog</a>
+								<a href="blog.php">Blog</a>
 							</li>
 
 							<li>
@@ -106,8 +108,18 @@ include 'includes/validations/validate_product_insert.php';
 							</li>
 
 							<li>
-								<a href="contact.html">Contact</a>
+								<a href="contact.php">Contact</a>
 							</li>
+							<?php
+							if(isset($_SESSION['id'])){
+							echo "<li><a href='logout.php'>Logout</a></li>";
+							echo "<li><a href='insert_product.php'>New</a></li>";
+							}
+							else{
+							echo "<li><a href='login.php'>Login</a></li>";
+							echo "<li><a href='registration.php'>Sign Up</a></li>";
+							}
+							 ?>
 						</ul>
 					</nav>
 				</div>

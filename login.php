@@ -1,10 +1,18 @@
 <?php
 session_start();
  ?>
+<?php
+include 'includes/classes/customer.php';
+include 'includes/classes/brands.php';
+include 'includes/classes/categories.php';
+include 'includes/validations/login_validate.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<title>Blog Detail</title>
+	<title>Home</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
@@ -28,7 +36,11 @@ session_start();
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
 	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/lightbox2/css/lightbox.min.css">
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
@@ -51,12 +63,12 @@ session_start();
 				</div>
 
 				<span class="topbar-child1">
-					40% Discount on OSX Games
+					Free shipping for standard order over $100
 				</span>
 
 				<div class="topbar-child2">
 					<span class="topbar-email">
-
+						fashe@example.com
 					</span>
 
 					<div class="topbar-language rs1-select2">
@@ -70,18 +82,6 @@ session_start();
 
 			<div class="wrap_header">
 				<!-- Logo -->
-
-
-				<div class="pos-relative bo11 of-hidden" style="margin-right: 20px;">
-					<input class="s-text7 size16 p-l-23 p-r-50" type="text" name="search-product" id="searchValue" placeholder="Search">
-
-					<button class="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4" onclick="search();">
-						<i class="fs-13 fa fa-search" aria-hidden="true"></i>
-					</button>
-				</div>
-
-
-
 				<a href="index.html" class="logo">
 					<img src="images/icons/logo.png" alt="IMG-LOGO">
 				</a>
@@ -89,7 +89,7 @@ session_start();
 				<!-- Menu -->
 				<div class="wrap_menu">
 					<nav class="menu">
-						<ul class="main_menu">
+            <ul class="main_menu">
 							<li>
 								<a href="index.php">Home</a>
 							</li>
@@ -109,14 +109,14 @@ session_start();
 							<li>
 								<a href="contact.php">Contact</a>
 							</li>
-							<?php
+              <?php
 							if(isset($_SESSION['id'])){
 							echo "<li><a href='logout.php'>Logout</a></li>";
-							echo "<li><a href='insert_product.php'>New</a></li>";
+              echo "<li><a href='insert_product.php'>New</a></li>";
 							}
 							else{
 							echo "<li><a href='login.php'>Login</a></li>";
-							echo "<li><a href='registration.php'>Sign Up</a></li>";
+              echo "<li><a href='registration.php'>Sign Up</a></li>";
 							}
 							 ?>
 						</ul>
@@ -138,7 +138,7 @@ session_start();
 						<!-- Header cart noti -->
 						<div class="header-cart header-dropdown">
 							<ul class="header-cart-wrapitem">
-								<!--regular cart items header goes here-->
+								<!-- header cart goes here -->
 							</ul>
 
 							<div class="header-cart-total">
@@ -148,7 +148,7 @@ session_start();
 							<div class="header-cart-buttons">
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->
-									<a href="cart.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+									<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 										View Cart
 									</a>
 								</div>
@@ -190,7 +190,7 @@ session_start();
 						<!-- Header cart noti -->
 						<div class="header-cart header-dropdown">
 							<ul class="header-cart-wrapitem">
-								<!-- mobile cart items header goes here -->
+								<!-- mobile header cart goes here -->
 							</ul>
 
 							<div class="header-cart-total">
@@ -200,7 +200,7 @@ session_start();
 							<div class="header-cart-buttons">
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->
-									<a href="cart.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+									<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 										View Cart
 									</a>
 								</div>
@@ -237,7 +237,7 @@ session_start();
 					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
 						<div class="topbar-child2-mobile">
 							<span class="topbar-email">
-								fashe@example.com
+								allstar@example.com
 							</span>
 
 							<div class="topbar-language rs1-select2">
@@ -261,24 +261,10 @@ session_start();
 
 					<li class="item-menu-mobile">
 						<a href="index.html">Home</a>
-						<ul class="sub-menu">
-							<li><a href="index.html">Homepage V1</a></li>
-							<li><a href="home-02.html">Homepage V2</a></li>
-							<li><a href="home-03.html">Homepage V3</a></li>
-						</ul>
-						<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
 					</li>
 
 					<li class="item-menu-mobile">
-						<a href="product.html">Shop</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="product.html">Sale</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="cart.html">Features</a>
+						<a href="product.php">Shop</a>
 					</li>
 
 					<li class="item-menu-mobile">
@@ -297,377 +283,122 @@ session_start();
 		</div>
 	</header>
 
-	<!-- breadcrumb -->
-	<div class="bread-crumb bgwhite flex-w p-l-52 p-r-15 p-t-30 p-l-15-sm">
-		<a href="index.html" class="s-text16">
-			Home
-			<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
-		</a>
-
-		<a href="blog.html" class="s-text16">
-			Blog
-			<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
-		</a>
-
-		<span class="s-text17">
-			Black Friday Guide: Best Sales & Discount Codes
-		</span>
-	</div>
-
-	<!-- content page -->
-	<section class="bgwhite p-t-60 p-b-25">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-lg-9 p-b-80">
-					<div class="p-r-50 p-r-0-lg">
-						<div class="p-b-40">
-							<div class="blog-detail-img wrap-pic-w">
-								<img src="images/blog-04.jpg" alt="IMG-BLOG">
-							</div>
-
-							<div class="blog-detail-txt p-t-33">
-								<h4 class="p-b-11 m-text24">
-									Black Friday Guide: Best Sales & Discount Codes
-								</h4>
-
-								<div class="s-text8 flex-w flex-m p-b-21">
-									<span>
-										By Admin
-										<span class="m-l-3 m-r-6">|</span>
-									</span>
-
-									<span>
-										28 Dec, 2018
-										<span class="m-l-3 m-r-6">|</span>
-									</span>
-
-									<span>
-										Cooking, Food
-										<span class="m-l-3 m-r-6">|</span>
-									</span>
-
-									<span>
-										8 Comments
-									</span>
-								</div>
-
-								<p class="p-b-25">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed turpis sed lorem dignissim vulputate nec cursus ante. Nunc sit amet tempor magna. Donec eros sem, porta eget leo et, varius eleifend mauris. Donec eu leo congue, faucibus
-									quam eu, viverra mauris. Nulla consectetur lorem mi, at scelerisque metus hendrerit vitae. Proin vel magna vel neque porta ultricies non eget mauris. Suspendisse potenti.
-								</p>
-
-								<p class="p-b-25">
-									Aliquam faucibus scelerisque placerat. Vestibulum vel libero eu nulla varius pretium eget eu magna. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean dictum faucibus felis, ac vestibulum
-									risus mollis in. Phasellus neque dolor, euismod vitae auctor eget, dignissim a felis. Etiam malesuada elit a nibh aliquam, placerat ultricies nibh dictum. Nam ut egestas velit. Pellentesque viverra tincidunt tellus. Etiam cursus, ligula id
-									vehicula cursus, turpis mauris facilisis massa, eget tincidunt est purus et odio. Nam quis luctus libero, non posuere velit. Ut eu varius diam, eu euismod elit. Donec efficitur, neque eu consectetur consectetur, dui sem consectetur felis,
-									vitae rutrum risus urna vel arcu. Aliquam semper ullamcorper laoreet. Sed arcu lectus, fermentum imperdiet purus eu, ornare ornare libero.
-								</p>
-							</div>
-
-							<div class="flex-m flex-w p-t-20">
-								<span class="s-text20 p-r-20">
-									Tags
-								</span>
-
-								<div class="wrap-tags flex-w">
-									<a href="#" class="tag-item">
-										Streetstyle
-									</a>
-
-									<a href="#" class="tag-item">
-										Crafts
-									</a>
-								</div>
-							</div>
-						</div>
-
-						<!-- Leave a comment -->
-						<form class="leave-comment">
-							<h4 class="m-text25 p-b-14">
-								Leave a Comment
-							</h4>
-
-							<p class="s-text8 p-b-40">
-								Your email address will not be published. Required fields are marked *
-							</p>
-
-							<textarea class="dis-block s-text7 size18 bo12 p-l-18 p-r-18 p-t-13 m-b-20" name="comment" placeholder="Comment..."></textarea>
-
-							<div class="bo12 of-hidden size19 m-b-20">
-								<input class="sizefull s-text7 p-l-18 p-r-18" type="text" name="name" placeholder="Name *">
-							</div>
-
-							<div class="bo12 of-hidden size19 m-b-20">
-								<input class="sizefull s-text7 p-l-18 p-r-18" type="text" name="email" placeholder="Email *">
-							</div>
-
-							<div class="bo12 of-hidden size19 m-b-30">
-								<input class="sizefull s-text7 p-l-18 p-r-18" type="text" name="website" placeholder="Website">
-							</div>
-
-							<div class="w-size24">
-								<!-- Button -->
-								<button class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-									Post Comment
-								</button>
-							</div>
-						</form>
-					</div>
-				</div>
-
-				<div class="col-md-4 col-lg-3 p-b-80">
-					<div class="rightbar">
-						<!-- Search -->
-						<div class="pos-relative bo11 of-hidden">
-							<input class="s-text7 size16 p-l-23 p-r-50" type="text" name="search-product" placeholder="Search">
-
-							<button class="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4">
-								<i class="fs-13 fa fa-search" aria-hidden="true"></i>
-							</button>
-						</div>
-
-						<!-- Categories -->
-						<h4 class="m-text23 p-t-56 p-b-34">
-							Categories
-						</h4>
-
-						<ul>
-							<li class="p-t-6 p-b-8 bo6">
-								<a href="#" class="s-text13 p-t-5 p-b-5">
-									Fashion
-								</a>
-							</li>
-
-							<li class="p-t-6 p-b-8 bo7">
-								<a href="#" class="s-text13 p-t-5 p-b-5">
-									Beauty
-								</a>
-							</li>
-
-							<li class="p-t-6 p-b-8 bo7">
-								<a href="#" class="s-text13 p-t-5 p-b-5">
-									Street Style
-								</a>
-							</li>
-
-							<li class="p-t-6 p-b-8 bo7">
-								<a href="#" class="s-text13 p-t-5 p-b-5">
-									Life Style
-								</a>
-							</li>
-
-							<li class="p-t-6 p-b-8 bo7">
-								<a href="#" class="s-text13 p-t-5 p-b-5">
-									DIY & Crafts
-								</a>
-							</li>
-						</ul>
-
-						<!-- Featured Products -->
-						<h4 class="m-text23 p-t-65 p-b-34">
-							Featured Products
-						</h4>
-
-						<ul class="bgwhite">
-							<li class="flex-w p-b-20">
-								<a href="product-detail.html" class="dis-block wrap-pic-w w-size22 m-r-20 trans-0-4 hov4">
-									<img src="images/item-16.jpg" alt="IMG-PRODUCT">
-								</a>
-
-								<div class="w-size23 p-t-5">
-									<a href="product-detail.html" class="s-text20">
-										White Shirt With Pleat Detail Back
-									</a>
-
-									<span class="dis-block s-text17 p-t-6">
-										$19.00
-									</span>
-								</div>
-							</li>
-
-							<li class="flex-w p-b-20">
-								<a href="product-detail.html" class="dis-block wrap-pic-w w-size22 m-r-20 trans-0-4 hov4">
-									<img src="images/item-17.jpg" alt="IMG-PRODUCT">
-								</a>
-
-								<div class="w-size23 p-t-5">
-									<a href="product-detail.html" class="s-text20">
-										Converse All Star Hi Black Canvas
-									</a>
-
-									<span class="dis-block s-text17 p-t-6">
-										$39.00
-									</span>
-								</div>
-							</li>
-
-							<li class="flex-w p-b-20">
-								<a href="product-detail.html" class="dis-block wrap-pic-w w-size22 m-r-20 trans-0-4 hov4">
-									<img src="images/item-08.jpg" alt="IMG-PRODUCT">
-								</a>
-
-								<div class="w-size23 p-t-5">
-									<a href="product-detail.html" class="s-text20">
-										Nixon Porter Leather Watch In Tan
-									</a>
-
-									<span class="dis-block s-text17 p-t-6">
-										$17.00
-									</span>
-								</div>
-							</li>
-
-							<li class="flex-w p-b-20">
-								<a href="product-detail.html" class="dis-block wrap-pic-w w-size22 m-r-20 trans-0-4 hov4">
-									<img src="images/item-03.jpg" alt="IMG-PRODUCT">
-								</a>
-
-								<div class="w-size23 p-t-5">
-									<a href="product-detail.html" class="s-text20">
-										Denim jacket blue
-									</a>
-
-									<span class="dis-block s-text17 p-t-6">
-										$39.00
-									</span>
-								</div>
-							</li>
-
-							<li class="flex-w p-b-20">
-								<a href="product-detail.html" class="dis-block wrap-pic-w w-size22 m-r-20 trans-0-4 hov4">
-									<img src="images/item-05.jpg" alt="IMG-PRODUCT">
-								</a>
-
-								<div class="w-size23 p-t-5">
-									<a href="product-detail.html" class="s-text20">
-										Nixon Porter Leather Watch In Tan
-									</a>
-
-									<span class="dis-block s-text17 p-t-6">
-										$17.00
-									</span>
-								</div>
-							</li>
-						</ul>
-
-						<!-- Archive -->
-						<h4 class="m-text23 p-t-50 p-b-16">
-							Archive
-						</h4>
-
-						<ul>
-							<li class="flex-sb-m">
-								<a href="#" class="s-text13 p-t-5 p-b-5">
-									July 2018
-								</a>
-
-								<span class="s-text13">
-									(9)
-								</span>
-							</li>
-
-							<li class="flex-sb-m">
-								<a href="#" class="s-text13 p-t-5 p-b-5">
-									June 2018
-								</a>
-
-								<span class="s-text13">
-									(39)
-								</span>
-							</li>
-
-							<li class="flex-sb-m">
-								<a href="#" class="s-text13 p-t-5 p-b-5">
-									May 2018
-								</a>
-
-								<span class="s-text13">
-									(29)
-								</span>
-							</li>
-
-							<li class="flex-sb-m">
-								<a href="#" class="s-text13 p-t-5 p-b-5">
-									April 2018
-								</a>
-
-								<span class="s-text13">
-									(35)
-								</span>
-							</li>
-
-							<li class="flex-sb-m">
-								<a href="#" class="s-text13 p-t-5 p-b-5">
-									March 2018
-								</a>
-
-								<span class="s-text13">
-									(22)
-								</span>
-							</li>
-
-							<li class="flex-sb-m">
-								<a href="#" class="s-text13 p-t-5 p-b-5">
-									February 2018
-								</a>
-
-								<span class="s-text13">
-									(32)
-								</span>
-							</li>
-
-							<li class="flex-sb-m">
-								<a href="#" class="s-text13 p-t-5 p-b-5">
-									January 2018
-								</a>
-
-								<span class="s-text13">
-									(21)
-								</span>
-							</li>
-
-							<li class="flex-sb-m">
-								<a href="#" class="s-text13 p-t-5 p-b-5">
-									December 2017
-								</a>
-
-								<span class="s-text13">
-									(26)
-								</span>
-							</li>
-						</ul>
-
-						<!-- Tags -->
-						<h4 class="m-text23 p-t-50 p-b-25">
-							Tags
-						</h4>
-
-						<div class="wrap-tags flex-w">
-							<a href="#" class="tag-item">
-								Fashion
-							</a>
-
-							<a href="#" class="tag-item">
-								Lifestyle
-							</a>
-
-							<a href="#" class="tag-item">
-								Denim
-							</a>
-
-							<a href="#" class="tag-item">
-								Streetstyle
-							</a>
-
-							<a href="#" class="tag-item">
-								Crafts
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+	<!-- Registration Form -->
+	<form action="login.php" method="post" onsubmit="return validation();" name="register">
+		<h2>Login</h2>
+		<p>
+      <label for="email" class="floatLabel">Email</label>
+      <br>
+			<input type="email" name="email" value="<?=@$email?>"/>*
+		</p>
+    <p>
+      <label for="password" class="floatLabel">Password</label>
+			<input type="password" name="password" value="<?=@$password?>"/>
+		</p>
+
+		<p>
+			<input type="submit" value="Create My Account" id="submit" name="submit">
+		</p>
+	</form>
+	<!--  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> -->
+
+	<style>
+
+		body {
+  background: #384047;
+  font-family: sans-serif;
+  font-size: 10px;
+}
+
+form {
+  background: #fff;
+  padding: 4em 4em 2em;
+  max-width: 400px;
+  margin: 20px auto 0;
+  box-shadow: 0 0 1em #222;
+  border-radius: 2px;
+  border: 2px solid black;
+
+}
+form h2 {
+  margin: 0 0 50px 0;
+  padding: 10px;
+  text-align: center;
+  font-size: 30px;
+  color: #666666;
+  border-bottom: solid 1px #e5e5e5;
+}
+form p {
+  margin: 0 0 3em 0;
+  position: relative;
+}
+form input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  outline: none;
+  margin: 0;
+}
+form input[type="text"],
+form input[type="password"] {
+  background: #fff;
+  border: 1px solid #dbdbdb;
+  font-size: 1.6em;
+  padding: .8em .5em;
+  border-radius: 2px;
+}
+form input[type="text"]:focus,
+form input[type="password"]:focus {
+  background: #fff;
+}
+form span {
+  display: block;
+  background: #F9A5A5;
+  padding: 2px 5px;
+  color: #666;
+}
+form input[type="submit"] {
+  background: rgba(148, 186, 101, 0.7);
+  box-shadow: 0 3px 0 0 rgba(123, 163, 73, 0.7);
+  border-radius: 2px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 2em;
+  line-height: 1.6em;
+  margin: 2em 0 0;
+  outline: none;
+  padding: .8em 0;
+  text-shadow: 0 1px #68B25B;
+}
+form input[type="submit"]:hover {
+  background: #94af65;
+  text-shadow: 0 1px 3px rgba(70, 93, 41, 0.7);
+}
+form label {
+  position: absolute;
+  left: 8px;
+  top: 10px;
+  color: #999;
+  font-size: 16px;
+  display: inline-block;
+  padding: 4px 10px;
+  font-weight: 400;
+  background-color: rgba(255, 255, 255, 0);
+  -moz-transition: color 0.3s, top 0.3s, background-color 0.8s;
+  -o-transition: color 0.3s, top 0.3s, background-color 0.8s;
+  -webkit-transition: color 0.3s, top 0.3s, background-color 0.8s;
+  transition: color 0.3s, top 0.3s, background-color 0.8s;
+}
+form label.floatLabel {
+  top: -11px;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+}
+
+
+  	</style>
 
 
 	<!-- Footer -->
@@ -680,7 +411,7 @@ session_start();
 
 				<div>
 					<p class="s-text7 w-size27">
-						Any questions? Let us know in store at 8th floor, Icon House, Airport, Ghana or call us on (+1) 96 716 6879
+						Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
 					</p>
 
 					<div class="flex-m p-t-30">
@@ -701,25 +432,25 @@ session_start();
 				<ul>
 					<li class="p-b-9">
 						<a href="#" class="s-text7">
-							Xbox
+							Men
 						</a>
 					</li>
 
 					<li class="p-b-9">
 						<a href="#" class="s-text7">
-							PS4
+							Women
 						</a>
 					</li>
 
 					<li class="p-b-9">
 						<a href="#" class="s-text7">
-							OSX
+							Dresses
 						</a>
 					</li>
 
 					<li class="p-b-9">
 						<a href="#" class="s-text7">
-							Windows
+							Sunglasses
 						</a>
 					</li>
 				</ul>
@@ -738,18 +469,22 @@ session_start();
 					</li>
 
 					<li class="p-b-9">
-						<a href="about.html" class="s-text7">
+						<a href="#" class="s-text7">
 							About Us
 						</a>
 					</li>
 
 					<li class="p-b-9">
-						<a href="contact.html" class="s-text7">
+						<a href="#" class="s-text7">
 							Contact Us
 						</a>
 					</li>
 
-
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Returns
+						</a>
+					</li>
 				</ul>
 			</div>
 
@@ -829,7 +564,7 @@ session_start();
 			</a>
 
 			<div class="t-center s-text8 p-t-20">
-				Copyright © 2018. All rights reserved. | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+				Copyright © 2018 All rights reserved. | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 			</div>
 		</div>
 	</footer>
@@ -843,9 +578,8 @@ session_start();
 		</span>
 	</div>
 
-	<!-- Container Selection -->
+	<!-- Container Selection1 -->
 	<div id="dropDownSelect1"></div>
-	<div id="dropDownSelect2"></div>
 
 
 
@@ -857,23 +591,42 @@ session_start();
 	<script type="text/javascript" src="vendor/bootstrap/js/popper.js"></script>
 	<script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
 	<!--===============================================================================================-->
-	<script type="text/javascript" src="vendor/select2/select2.min.js"></script>
 	<script type="text/javascript" src="js/cart.js"></script>
-	<script type="text/javascript">
+	<script type="text/javascript" src="vendor/select2/select2.min.js"></script>
+	<!-- <script type="text/javascript">
 		$(".selection-1").select2({
 			minimumResultsForSearch: 20,
 			dropdownParent: $('#dropDownSelect1')
 		});
-
-		$(".selection-2").select2({
-			minimumResultsForSearch: 20,
-			dropdownParent: $('#dropDownSelect2')
+	</script> -->
+	<!--===============================================================================================-->
+	<script type="text/javascript" src="vendor/slick/slick.min.js"></script>
+	<script type="text/javascript" src="js/slick-custom.js"></script>
+	<!--===============================================================================================-->
+	<script type="text/javascript" src="vendor/countdowntime/countdowntime.js"></script>
+	<!--===============================================================================================-->
+	<script type="text/javascript" src="vendor/lightbox2/js/lightbox.min.js"></script>
+	<!--===============================================================================================-->
+	<script type="text/javascript" src="vendor/sweetalert/sweetalert.min.js"></script>
+	<!-- <script type="text/javascript">
+		$('.block2-btn-addcart').each(function() {
+			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+			$(this).on('click', function() {
+				swal(nameProduct, "is added to cart !", "success");
+			});
 		});
-	</script>
+
+		$('.block2-btn-addwishlist').each(function() {
+			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+			$(this).on('click', function() {
+				swal(nameProduct, "is added to wishlist !", "success");
+			});
+		});
+	</script> -->
+
 	<!--===============================================================================================-->
 	<script src="js/main.js"></script>
-	<script src="js/agoro.js"></script>
-
+<script src="js/registration_validation.js"></script>
 </body>
 
 </html>
