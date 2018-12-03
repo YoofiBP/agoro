@@ -30,7 +30,7 @@ echo "<div class='container-menu-header'>
 
   <div class='wrap_header'>
     <!-- Logo -->
-    <a href='index.html' class='logo'>
+    <a href='index.php' class='logo'>
       <img src='images/AGORO.png' alt='IMG-LOGO'>
     </a>
 
@@ -65,7 +65,7 @@ echo "<div class='container-menu-header'>
           echo "<li><a href='login.php'>Login</a></li>";
           echo "<li><a href='registration.php'>Sign Up</a></li>";
           }
-           "
+           echo "
         </ul>
       </nav>
     </div>
@@ -81,18 +81,12 @@ echo "<div class='container-menu-header'>
 
 
       <div class='pos-relative bo11 of-hidden' style='margin-right: 20px;'>
-        <input class='s-text7 size16 p-l-23 p-r-50' type='text' name='search-product' id='searchValue' placeholder='Search'>
+        <input class='s-text7 size12 p-l-23 p-r-50' type='text' name='search-product' id='searchValue' placeholder='Search'>
 
         <button class='flex-c-m size5 ab-r-m color1 color0-hov trans-0-4' onclick='search();'>
           <i class='fs-13 fa fa-search' aria-hidden='true'></i>
         </button>
       </div>
-
-
-
-
-
-
 
       <a href='#' class='header-wrapicon1 dis-block'>
         <img src='images/icons/icon-header-01.png' class='header-icon1' alt='ICON'>
@@ -138,7 +132,7 @@ echo "<div class='container-menu-header'>
 <!-- Header Mobile -->
 <div class='wrap_header_mobile'>
   <!-- Logo moblie -->
-  <a href='index.html' class='logo-mobile'>
+  <a href='index.php' class='logo-mobile'>
     <img src='images/icons/logo.png' alt='IMG-LOGO'>
   </a>
 

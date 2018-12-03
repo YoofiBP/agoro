@@ -40,12 +40,12 @@ session_start();
 	<!--===============================================================================================-->
 </head>
 
-<body class="animsition" onload="show_header();displayCartItems();displayCartSize();displayCartValue();;">
+<body class="animsition" onload="displayCartItems();displayCartSize();displayCartValue();;">
 
 	<!-- Header -->
 	<header class="header1" id="agoro_header">
 		<!-- Header desktop -->
-
+<?php include ('includes/templates/header.php');?>
 	</header>
 
 	<!-- Slide1 -->
@@ -197,7 +197,7 @@ session_start();
 
 							<div class="w-size2 p-t-25">
 								<!-- Button -->
-								<a href="#" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
+								<a href="registration.php" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
 									Sign Up
 								</a>
 							</div>
