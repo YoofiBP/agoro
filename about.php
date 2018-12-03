@@ -52,7 +52,7 @@
 
 				<div class="topbar-child2">
 					<span class="topbar-email">
-						
+
 					</span>
 
 					<div class="topbar-language rs1-select2">
@@ -87,7 +87,7 @@
 							</li>
 
 							<li>
-								<a href="about.html">About</a>
+								<a href="about.php">About</a>
 							</li>
 
 							<li>
@@ -111,7 +111,7 @@
 					</div>
 
 
-					
+
 					<a href="#" class="header-wrapicon1 dis-block">
 						<img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
 					</a>
@@ -287,7 +287,7 @@
 	<!-- Title Page -->
 	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(images/about-banner.jpg);">
 		<h2 class="l-text2 t-center">
-			
+
 		</h2>
 	</section>
 
@@ -404,7 +404,7 @@
 						</a>
 					</li>
 
-				
+
 				</ul>
 			</div>
 

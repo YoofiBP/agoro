@@ -57,7 +57,7 @@ include 'PHP/database.php';
 
 				<div class="topbar-child2">
 					<span class="topbar-email">
-						
+
 					</span>
 
 					<div class="topbar-language rs1-select2">
@@ -92,7 +92,7 @@ include 'PHP/database.php';
 							</li>
 
 							<li>
-								<a href="about.html">About</a>
+								<a href="about.php">About</a>
 							</li>
 
 							<li>
@@ -117,7 +117,7 @@ include 'PHP/database.php';
 						<!-- Header cart noti -->
 						<div class="header-cart header-dropdown">
 							<ul class="header-cart-wrapitem">
-								<?php 
+								<?php
 								$forcart = new Databases;
 								$forcart->displayCartItems('other');
 								?>
@@ -172,7 +172,7 @@ include 'PHP/database.php';
 						<!-- Header cart noti -->
 						<div class="header-cart header-dropdown">
 							<ul class="header-cart-wrapitem">
-								<?php 
+								<?php
 								$forcart->displayCartItems('other');
 								?>
 							</ul>
@@ -435,12 +435,12 @@ include 'PHP/database.php';
 
 					<!-- Product -->
 					<div id="pclocation" class="row">
-						<?php 
+						<?php
 							$pr = new Databases;
 							$pr->getPCatalogue();
 						?>
 
-						
+
 					</div>
 
 					<!-- Pagination -->
@@ -533,7 +533,7 @@ include 'PHP/database.php';
 						</a>
 					</li>
 
-				
+
 				</ul>
 			</div>
 
@@ -695,7 +695,7 @@ include 'PHP/database.php';
 	    filterBar.noUiSlider.on('update', function(values, handle ) {
 	        skipValues[handle].innerHTML = Math.round(values[handle]) ;
 	    });
-	
+
 		function filterPrice(min,max) {
 			console.log(min);
 			console.log(max);
@@ -703,8 +703,8 @@ include 'PHP/database.php';
 			xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					var myObj = this.responseText;
-					document.getElementById('pclocation').innerHTML = myObj;	
-					
+					document.getElementById('pclocation').innerHTML = myObj;
+
 				}
 			};
 			xhttp.open("GET", "PHP/priceSLiderFilter.php?min="+min+"&max="+max, true);

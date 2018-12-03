@@ -30,7 +30,7 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
-<?php 
+<?php
    include 'PHP/database.php';
    $pid = $_GET['p'];
    if (isset($pid)) {
@@ -95,7 +95,7 @@
 							</li>
 
 							<li>
-								<a href="about.html">About</a>
+								<a href="about.php">About</a>
 							</li>
 
 							<li>
@@ -120,7 +120,7 @@
 						<!-- Header cart noti -->
 						<div class="header-cart header-dropdown">
 							<ul class="header-cart-wrapitem">
-								<?php  
+								<?php
 								$forcart = new Databases;
 								$forcart->displayCartItems('other');
 								?>
@@ -301,17 +301,17 @@
 						<?php
 						   if (isset($pid)) {
 						     $v->displaySinglePic($work);
-						   } 
+						   }
 						?>
 						<?php
 						   if (isset($pid)) {
 						     $v->displaySinglePic1($work);
-						   } 
+						   }
 						?>
 						<?php
 						   if (isset($pid)) {
 						     $v->displaySinglePic2($work);
-						   } 
+						   }
 						?>
 					</div>
 				</div>
@@ -441,7 +441,7 @@
 
 
 	<!-- Relate Product -->
-	
+
 
 	<!-- Footer -->
 	<footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">

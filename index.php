@@ -58,7 +58,7 @@
 
 				<div class="topbar-child2">
 					<span class="topbar-email">
-						
+
 					</span>
 
 					<div class="topbar-language rs1-select2">
@@ -292,11 +292,11 @@
 				<div class="item-slick1 item1-slick1" style="background-image: url(images/gameover.png);">
 					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
 						<span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
-						We Are Agoro
+							We Are Agoro
 						</span>
 
 						<h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="fadeInUp">
-							
+
 						</h2>
 
 						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
@@ -330,7 +330,7 @@
 				<div class="item-slick1 item3-slick1" style="background-image: url(images/bf.jpg);">
 					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
 						<span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="rotateInDownLeft">
-							
+
 						</span>
 
 						<h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="rotateInUpRight">
@@ -844,7 +844,7 @@
 					</li>
 
 					<li class="p-b-9">
-						<a href="about.html" class="s-text7">
+						<a href="about.php" class="s-text7">
 							About Us
 						</a>
 					</li>
@@ -855,7 +855,7 @@
 						</a>
 					</li>
 
-				
+
 				</ul>
 			</div>
 
