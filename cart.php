@@ -51,12 +51,12 @@
 				</div>
 
 				<span class="topbar-child1">
-					Free shipping for standard order over $100
+					40% Discount on OSX Games
 				</span>
 
 				<div class="topbar-child2">
 					<span class="topbar-email">
-						fashe@example.com
+						
 					</span>
 
 					<div class="topbar-language rs1-select2">
@@ -103,6 +103,20 @@
 
 				<!-- Header Icon -->
 				<div class="header-icons">
+
+
+
+
+					<div class="pos-relative bo11 of-hidden" style="margin-right: 20px;">
+						<input class="s-text7 size16 p-l-23 p-r-50" type="text" name="search-product" id="searchValue" placeholder="Search">
+
+						<button class="flex-c-m size5 ab-r-m color1 color0-hov trans-0-4" onclick="search();">
+							<i class="fs-13 fa fa-search" aria-hidden="true"></i>
+						</button>
+					</div>
+
+
+					
 					<a href="#" class="header-wrapicon1 dis-block">
 						<img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
 					</a>
@@ -417,7 +431,7 @@
 
 				<div>
 					<p class="s-text7 w-size27">
-						Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
+						Any questions? Let us know in store at 8th floor, Icon House, Airport, Ghana or call us on (+1) 96 716 6879
 					</p>
 
 					<div class="flex-m p-t-30">
@@ -438,25 +452,25 @@
 				<ul>
 					<li class="p-b-9">
 						<a href="#" class="s-text7">
-							Men
+							Xbox
 						</a>
 					</li>
 
 					<li class="p-b-9">
 						<a href="#" class="s-text7">
-							Women
+							PS4
 						</a>
 					</li>
 
 					<li class="p-b-9">
 						<a href="#" class="s-text7">
-							Dresses
+							OSX
 						</a>
 					</li>
 
 					<li class="p-b-9">
 						<a href="#" class="s-text7">
-							Sunglasses
+							Windows
 						</a>
 					</li>
 				</ul>
@@ -475,22 +489,18 @@
 					</li>
 
 					<li class="p-b-9">
-						<a href="#" class="s-text7">
+						<a href="about.html" class="s-text7">
 							About Us
 						</a>
 					</li>
 
 					<li class="p-b-9">
-						<a href="#" class="s-text7">
+						<a href="contact.html" class="s-text7">
 							Contact Us
 						</a>
 					</li>
 
-					<li class="p-b-9">
-						<a href="#" class="s-text7">
-							Returns
-						</a>
-					</li>
+				
 				</ul>
 			</div>
 
@@ -570,7 +580,7 @@
 			</a>
 
 			<div class="t-center s-text8 p-t-20">
-				Copyright © 2018 All rights reserved. | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+				Copyright © 2018. All rights reserved. | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 			</div>
 		</div>
 	</footer>
@@ -613,6 +623,7 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+	<script src="js/agoro.js"></script>
 
 </body>
 </html>

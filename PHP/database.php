@@ -371,64 +371,40 @@ class Databases {
 				/*echo "This is the image: " . $image;
 				echo "<br>";*/
 				$category = $this->getCategory($pfocus['product_cat']);
-				if ($i == count($mray)-1 && $b%3 == 1) {
-					echo "<div class = 'clearfix product'>
-					<a class='pLink' id='".$pid."' href='Product.php?p=".$pid."'>
-						<div>
-							<img src=".$image." alt='".$title."'>
-							<h2>".$title."</h2>
-							<p class='price'>$".$price."</p>
-							<p>".$category."</p>
-							<p><a href='#pLink1'><button id='add2cart' onclick='return add2Cart(".$pid.",1);'>Add to Cart</button></a></p>
-						</div>
-					</a>
-					</div>";
-				}elseif ($i == count($mray)-1 && $b%3 == 2) {
-					echo "<a class='pLink' id='".$pid."' href='Product.php?p=".$pid."'>
-						<div>
-							<img src=".$image." alt='".$title."'>
-							<h2>".$title."</h2>
-							<p class='price'>$".$price."</p>
-							<p>".$category."</p>
-							<p><a href='#pLink1'><button id='add2cart' onclick='return add2Cart(".$pid.",1);'>Add to Cart</button></a></p>
-						</div>
-					</a>
-					</div>
-					<br>";
-				}elseif ($b%3 == 1) {
-					echo "<div class = 'clearfix product'>
-					<a class='pLink' id='".$pid."' href='Product.php?p=".$pid."'>
-						<div>
-							<img src=".$image." alt='".$title."'>
-							<h2>".$title."</h2>
-							<p class='price'>$".$price."</p>
-							<p>".$category."</p>
-							<p><a href='#pLink1'><button id='add2cart' onclick='return add2Cart(".$pid.",1);'>Add to Cart</button></a></p>
-						</div>
-					</a>";
-				}elseif ($b%3 == 2) {
-					echo "<a class='pLink' id='".$pid."' href='Product.php?p=".$pid."'>
-						<div>
-							<img src=".$image." alt='".$title."'>
-							<h2>".$title."</h2>
-							<p class='price'>$".$price."</p>
-							<p>".$category."</p>
-							<p><a href='#pLink1'><button id='add2cart' onclick='return add2Cart(".$pid.",1);'>Add to Cart</button></a></p>
-						</div>
-					</a>";
-				}elseif ($b%3 == 0) {
-					echo "<a class='pLink' id='".$pid."' href='Product.php?p=".$pid."'>
-						<div>
-							<img src=".$image." alt='".$title."'>
-							<h2>".$title."</h2>
-							<p class='price'>$".$price."</p>
-							<p>".$category."</p>
-							<p><a href='#pLink1'><button id='add2cart' onclick='return add2Cart(".$pid.",1);'>Add to Cart</button></a></p>
-						</div>
-					</a>
-					</div>
-					<br>";
-				}
+				echo '<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
+							<!-- Block2 -->
+							<div class="block2">
+								<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+									<img src="'.$image.'" alt="IMG-PRODUCT">
+
+									<div class="block2-overlay trans-0-4">
+										<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+											<i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+											<i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
+										</a>
+
+										<div class="block2-btn-addcart w-size1 trans-0-4">
+											<!-- Button -->
+											<p id="pid" style="display:none">'.$pid.'</p>
+											<p id="qty" style="display:none">1</p>
+											<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+												Add to Cart
+											</button>
+										</div>
+									</div>
+								</div>
+
+								<div class="block2-txt p-t-20">
+									<a href="product-detail.php?p='.$pid.'" class="block2-name dis-block s-text3 p-b-5">
+										'.$title.'
+									</a>
+
+									<span class="block2-price m-text6 p-r-5">
+										GHC '.$price.'
+									</span>
+								</div>
+							</div>
+						</div>';
 			}
 			return;
 		} else{
