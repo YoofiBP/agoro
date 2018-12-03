@@ -38,6 +38,11 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<!--===============================================================================================-->
+	<script>
+	function redirect_to_pay(){
+	  window.location = 'checkout.php';
+	}
+	</script>
 </head>
 
 <body class="animsition" onload="displayCartItems();displayCartSize();displayCartValue()">
@@ -68,6 +73,7 @@ session_start();
 						<select class="selection-1" name="time">
 							<option>USD</option>
 							<option>EUR</option>
+							<option>GHC</option>
 						</select>
 					</div>
 				</div>
@@ -163,14 +169,14 @@ session_start();
 							<div class="header-cart-buttons">
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->
-									<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+									<a href="cart.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 										View Cart
 									</a>
 								</div>
 
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->
-									<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+									<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4" onclick="redirect_to_pay();">
 										Check Out
 									</a>
 								</div>
@@ -471,11 +477,11 @@ session_start();
 			<div class="wrap-slick2">
 				<div class="slick2">
 
-					
 
-					
 
-					
+
+
+
 
 					<div class="item-slick2 4-l-15 p-r-15">
 						<!-- Block2 -->

@@ -37,6 +37,11 @@ session_start();
    include 'PHP/database.php';
    $forcart = new Databases;
 ?>
+<script>
+function redirect_to_pay(){
+  window.location = 'checkout.php';
+}
+</script>
 </head>
 <body class="animsition" onload="displayCartItems();displayCartSize();displayCartValue()">
 
@@ -160,7 +165,7 @@ session_start();
 
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->
-									<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+									<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4" onclick="redirect_to_pay();">
 										Check Out
 									</a>
 								</div>
@@ -373,7 +378,7 @@ session_start();
 
 				<div class="size15 trans-0-4">
 					<!-- Button -->
-					<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+					<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" onclick="redirect_to_pay();">
 						Proceed to Checkout
 					</button>
 				</div>
