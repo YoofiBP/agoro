@@ -38,6 +38,11 @@ session_start();
 <?php
 include 'PHP/database.php';
 ?>
+<script>
+function redirect_to_pay(){
+  window.location = 'checkout.php';
+}
+</script>
 </head>
 <body class="animsition" onload="displayCartItems();displayCartSize();displayCartValue()">
 
@@ -150,9 +155,9 @@ include 'PHP/database.php';
 
 								<div class="header-cart-wrapbtn">
 									<!-- Button -->
-									<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-										Check Out
-									</a>
+                  <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4" onclick="redirect_to_pay();">
+                    Check Out
+                  </a>
 								</div>
 							</div>
 						</div>

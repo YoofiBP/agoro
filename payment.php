@@ -341,11 +341,6 @@ function redirect_to_pay(){
 				<h5 class="m-text20 p-b-24">
 					Cart Totals
 				</h5>
-
-				<!--  -->
-				<!--  -->
-
-				<!--  -->
 				<div class="flex-w flex-sb-m p-t-26 p-b-30">
 					<span class="m-text22 w-size19 w-full-sm">
 						Total:

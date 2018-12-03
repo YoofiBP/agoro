@@ -285,7 +285,7 @@ include 'includes/validations/validate_product_insert.php';
 	</header>
 
 	<!-- Registration Form -->
-	<form action="registration.php" method="post" onsubmit="return validation();">
+	<form action="insert_product.php" method="post" onsubmit="return validation();">
 		<h2>Insert Product</h2>
 		<p>
 			<label for=title class="floatLabel">Product Name</label>
@@ -328,7 +328,7 @@ include 'includes/validations/validate_product_insert.php';
 			<input value="<?=@$key_words?>" id="keywords" name="keywords" type="text">*<?php echo $keyword_error;?>
 		</p>
 		<p>
-			<input type="submit" value="Create My Account" id="submit" name="submit">
+			<input type="submit" value="Insert product" id="submit" name="submit">
 		</p>
 	</form>
 	<!--  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> -->

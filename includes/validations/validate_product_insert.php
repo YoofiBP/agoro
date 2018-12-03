@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
   $price = $_POST['price'];
   $description = $_POST['descr'];
   $key_words = $_POST['keywords'];
-  $uploaddir = 'img/';
+  $uploaddir = 'images/';
   $image = $uploaddir.basename($_FILES['image']['name']);
 
   if($title == ""){
