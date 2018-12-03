@@ -24,6 +24,13 @@ function displayCartValue(){
 		url: 'PHP/displayCartValueHeader.php',
 		success: function(total){
 			$(document).find('.htotal').html(total);
+			console.log($(document).attr('title'));
+			if ($(document).attr('title') == "Cart") {
+				console.log($(document).find('#t1').html());
+				$(document).find('#t1').html(total);
+			}else{
+				console.log("test failed");
+			}
 		}
 	});
 }
