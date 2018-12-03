@@ -336,28 +336,6 @@ function redirect_to_pay(){
 				</div>
 			</div>
 
-			<div class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
-				<div class="flex-w flex-m w-full-sm">
-					<div class="size11 bo4 m-r-10">
-						<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="coupon-code" placeholder="Coupon Code">
-					</div>
-
-					<div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
-						<!-- Button -->
-						<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-							Apply coupon
-						</button>
-					</div>
-				</div>
-
-				<div class="size10 trans-0-4 m-t-10 m-b-10">
-					<!-- Button -->
-					<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-						Update Cart
-					</button>
-				</div>
-			</div>
-
 			<!-- Total -->
 			<div class="bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
 				<h5 class="m-text20 p-b-24">
@@ -377,10 +355,27 @@ function redirect_to_pay(){
 				</div>
 
 				<div class="size15 trans-0-4">
-					<!-- Button -->
-					<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" onclick="redirect_to_pay();">
-						Proceed to Checkout
-					</button>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+
+  <!-- Identify your business so that you can collect the payments. -->
+  <input type="hidden" name="business" value="herschelgomez@xyzzyu.com">
+
+  <!-- Specify a Buy Now button. -->
+  <input type="hidden" name="cmd" value="_xclick">
+
+  <!-- Specify details about the item that buyers will purchase. -->
+  <input type="hidden" name="item_name" value="Hot Sauce-12oz. Bottle">
+  <input type="hidden" name="amount" value="5.95">
+  <input type="hidden" name="currency_code" value="USD">
+
+  <!-- Display the payment button. -->
+  <input type="image" name="submit" border="0"
+  src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
+  alt="Buy Now">
+  <img alt="" border="0" width="1" height="1"
+  src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+
+</form>
 				</div>
 			</div>
 		</div>
