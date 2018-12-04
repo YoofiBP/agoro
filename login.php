@@ -70,7 +70,7 @@ include 'includes/validations/login_validate.php';
 		</p>
 
 		<p>
-			<input type="submit" value="Create My Account" id="submit" name="submit">
+			<input type="submit" value="Login" id="submit" name="submit">
 		</p>
 	</form>
 	<!--  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script> -->

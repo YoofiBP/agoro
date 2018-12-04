@@ -118,7 +118,7 @@ echo "<div class='container-menu-header'>
 
             <div class='header-cart-wrapbtn'>
               <!-- Button -->
-              <a href='#' class='flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4' onclick='redirect_to_pay();'>
+              <a href='checkout.php' class='flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4' onclick='redirect_to_pay();'>
                 Check Out
               </a>
             </div>

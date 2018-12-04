@@ -43,7 +43,7 @@ function redirect_to_pay(){
 }
 </script>
 </head>
-<body class="animsition" onload="displayCartItems();displayCartSize();displayCartValue()">
+<body class="animsition" onload="show_buy_now();displayCartItems();displayCartSize();displayCartValue()">
 
 	<!-- Header -->
   <header class="header1">
@@ -53,9 +53,9 @@ function redirect_to_pay(){
 
 
 	<!-- Title Page -->
-	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(images/heading-pages-01.jpg);">
+	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(images/Pay_banner.png);">
 		<h2 class="l-text2 t-center">
-			Cart
+			Payment
 		</h2>
 	</section>
 
@@ -86,36 +86,8 @@ function redirect_to_pay(){
 				<h5 class="m-text20 p-b-24">
 					Cart Totals
 				</h5>
-				<div class="flex-w flex-sb-m p-t-26 p-b-30">
-					<span class="m-text22 w-size19 w-full-sm">
-						Total:
-					</span>
+				<div class="size15 trans-0-4" id="payment">
 
-					<p style="font-size: 19px;">$<span class="m-text21 w-size20 w-full-sm" id="t1">tester</span>.00</p>
-				</div>
-
-				<div class="size15 trans-0-4">
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-
-  <!-- Identify your business so that you can collect the payments. -->
-  <input type="hidden" name="business" value="herschelgomez@xyzzyu.com">
-
-  <!-- Specify a Buy Now button. -->
-  <input type="hidden" name="cmd" value="_xclick">
-
-  <!-- Specify details about the item that buyers will purchase. -->
-  <input type="hidden" name="item_name" value="Hot Sauce-12oz. Bottle">
-  <input type="hidden" name="amount" value="5.95">
-  <input type="hidden" name="currency_code" value="USD">
-
-  <!-- Display the payment button. -->
-  <input type="image" name="submit" border="0"
-  src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
-  alt="Buy Now">
-  <img alt="" border="0" width="1" height="1"
-  src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
-
-</form>
 				</div>
 			</div>
 		</div>
@@ -167,6 +139,7 @@ function redirect_to_pay(){
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
 	<script src="js/agoro.js"></script>
+  <script src="js/ajax_calls.js" type="text/javascript"></script>
 
 </body>
 </html>
