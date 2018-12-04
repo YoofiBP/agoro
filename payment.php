@@ -51,7 +51,6 @@ function redirect_to_pay(){
   <?php include ('includes/templates/header.php');?>
   </header>
 
-
 	<!-- Title Page -->
 	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(images/Pay_banner.png);">
 		<h2 class="l-text2 t-center">
@@ -93,14 +92,10 @@ function redirect_to_pay(){
 		</div>
 	</section>
 
-
-
 	<!-- Footer -->
   <footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
 <?php include ('includes/templates/footer.php')?>;
 	</footer>
-
-
 
 	<!-- Back to top -->
 	<div class="btn-back-to-top bg0-hov" id="myBtn">
@@ -112,8 +107,6 @@ function redirect_to_pay(){
 	<!-- Container Selection -->
 	<div id="dropDownSelect1"></div>
 	<div id="dropDownSelect2"></div>
-
-
 
 <!--===============================================================================================-->
 	<script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
