@@ -33,6 +33,11 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+<script>
+function redirect_to_pay(){
+  window.location = 'checkout.php';
+}
+</script>
 </head>
 <body class="animsition" onload="displayCartItems();displayCartSize();displayCartValue()">
 
