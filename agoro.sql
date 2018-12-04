@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 28, 2018 at 12:24 PM
+-- Generation Time: Dec 05, 2018 at 12:34 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 5.6.38
 
@@ -21,6 +21,19 @@ SET time_zone = "+00:00";
 --
 -- Database: `agoro`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blog`
+--
+
+CREATE TABLE `blog` (
+  `blog_id` int(11) NOT NULL,
+  `Post` text NOT NULL,
+  `Date` date NOT NULL,
+  `Name` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -62,10 +75,14 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`p_id`, `ip_add`, `qty`) VALUES
+(0, '::1', 0),
 (3, '::1', 1),
+(4, '::1', 1),
+(6, '::1', 1),
 (8, '::1', 1),
 (9, '::1', 1),
-(10, '::1', 1);
+(10, '::1', 1),
+(11, '::1', 1);
 
 -- --------------------------------------------------------
 
