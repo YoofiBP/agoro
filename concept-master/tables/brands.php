@@ -14,19 +14,19 @@ if(isset($_SESSION['admin'])){
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
-  <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/libs/css/style.css">
-  <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
-  <link rel="stylesheet" href="assets/vendor/charts/chartist-bundle/chartist.css">
-  <link rel="stylesheet" href="assets/vendor/charts/morris-bundle/morris.css">
-  <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="assets/vendor/charts/c3charts/c3.css">
-  <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+  <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/libs/css/style.css">
+  <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+  <link rel="stylesheet" href="../assets/vendor/charts/chartist-bundle/chartist.css">
+  <link rel="stylesheet" href="../assets/vendor/charts/morris-bundle/morris.css">
+  <link rel="stylesheet" href="../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../assets/vendor/charts/c3charts/c3.css">
+  <link rel="stylesheet" href="../assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
   <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
 </head>
 
-<body onload="show_summary();">
+<body onload="show_brands();">
   <!-- ============================================================== -->
   <!-- main wrapper -->
   <!-- ============================================================== -->
@@ -82,7 +82,7 @@ if(isset($_SESSION['admin'])){
                 <div id="submenu-2" class="collapse submenu" style="">
                   <ul class="nav flex-column">
                     <li class="nav-item">
-                      <a class="nav-link" href="tables/brands.php">Brands <span class="badge badge-secondary">New</span></a>
+                      <a class="nav-link" href="pages/cards.html">Brands <span class="badge badge-secondary">New</span></a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="pages/general.html">Categories</a>
@@ -198,7 +198,7 @@ if(isset($_SESSION['admin'])){
           <!-- ============================================================== -->
           <!-- end pageheader  -->
           <!-- ============================================================== -->
-          <div class="ecommerce-widget" id="summary">
+          <div class="ecommerce-widget" id="brands">
 
 
         </div>
@@ -236,7 +236,7 @@ if(isset($_SESSION['admin'])){
   <!-- Optional JavaScript -->
   <!-- jquery 3.3.1 -->
   <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
-  <script src="../js/ajax_calls.js"></script>
+  <script src="../../js/ajax_calls.js"></script>
   <!-- bootstap bundle js -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
   <!-- slimscroll js -->

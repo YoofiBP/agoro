@@ -2,6 +2,13 @@
 //include '../includes/classes/dbh.php';
 include '../includes/classes/cart.php';
 
+echo "<div class='row'>
+    <div class='col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12'>
+      <div class='card'>
+        <h5 class='card-header'>Recent Orders</h5>
+        <div class='card-body p-0'>
+          <div class='table-responsive'>";
+
 echo "<table class='table'>
   <thead class='bg-light'>
     <tr class='border-0'>
@@ -38,7 +45,33 @@ echo "<table class='table'>
     </tr>
     ";
 }
+
 echo $str;
-echo "  </tbody>
+echo "</div>
+</div>
+</div>
+</div>";
+
+
+$sql2 = "SELECT SUM(product_price) FROM (SELECT products.product_id, products.product_image, products.product_title, orders.qty, products.product_price, orders.invoice_no, orders.`order-date` FROM products, orders WHERE products.product_id = orders.product_id) AS Some";
+$totals = $cart->getCart($sql2);
+$ovr = 0;
+while($rev = mysqli_fetch_array($totals)){
+  $ovr = $rev['SUM(product_price)'];
+}
+echo"
+<div class='col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12'>
+  <div class='card border-3 border-top border-top-primary'>
+    <div class='card-body'>
+      <h5 class='text-muted'>Sales Total</h5>
+      <div class='metric-value d-inline-block'>
+        <h1 class='mb-1'>Ghc ".$ovr."</h1>
+      </div>
+    </div>
+  </div>
+</div>
+</div>";
+
+echo "</tbody>
 </table>";
 ?>

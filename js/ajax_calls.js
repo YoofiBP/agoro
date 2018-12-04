@@ -72,3 +72,18 @@ function show_summary(){
   xmlhttp.open("GET","../concept-master/panel_summary.php",true);
   xmlhttp.send();
 }
+
+function show_brands(){
+  var xmlhttp;
+    xmlhttp=new XMLHttpRequest();
+
+  xmlhttp.onreadystatechange=function()
+    {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+      {
+      document.getElementById("brands").innerHTML=xmlhttp.responseText;
+      }
+    }
+  xmlhttp.open("GET","../tables/show_brands.php",true);
+  xmlhttp.send();
+}
