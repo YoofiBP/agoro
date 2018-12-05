@@ -10,14 +10,15 @@ session_start();
   $date = $_SESSION['date'];
   $status = '';
   $invoice = mt_rand();
-  $con=mysqli_connect("localhost","root","","agoro");
+  // $con=mysqli_connect("localhost","root","","agoro");
+  $con=mysqli_connect("sql9.freemysqlhosting.net","sql9268188","2H5AdyAzBK","sql9268188");
 
   //inserting into payment table
   $sql = "INSERT INTO payment (amt, customer_id, product_id, currency,payment_date)
   VALUES ('$amount','$customer_id','$product_id','$currency','$date')";
   mysqli_query($con,$sql);
   echo "<h1>Payment successful</h1>";
-  echo "<h3>Thank you for shopping with YofShop</h3>";
+  echo "<h3>Thank you for shopping with AGORO</h3>";
 
 //getting customer information from customer table
   $sql_id = "SELECT * FROM customer WHERE customer_id=".$customer_id;

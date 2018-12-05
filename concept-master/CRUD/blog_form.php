@@ -6,7 +6,7 @@ if(isset($_SESSION['admin'])){
   header('Location:admin_login.php');
 }
 
-include 'insert_form.php';
+include 'insert_blog.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -77,7 +77,7 @@ include 'insert_form.php';
                 Menu
               </li>
               <li class="nav-item ">
-                <a class="nav-link" href="../index.php">Dashboard</a>
+              <a class="nav-link" href="../index.php">Dashboard</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Tables</a>
@@ -137,7 +137,7 @@ include 'insert_form.php';
           <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <div class="page-header">
-                <h2 class="pageheader-title">All Brands</h2>
+                <h2 class="pageheader-title">Upload Blog Content</h2>
                 <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
                 <div class="page-breadcrumb">
                   <nav aria-label="breadcrumb">
@@ -150,9 +150,16 @@ include 'insert_form.php';
           <!-- end pageheader  -->
           <!-- ============================================================== -->
           <div class="ecommerce-widget" id="brands">
-            <form action="insert_brand.php" method="post" name="brand_insert">
-              Brand Name:<input type="text" name="brand_name"/>
-              <input value="Add Brand" type="submit" name="submit"/>
+            <form action="insert_blog.php" method="post" id="blog_upload">
+              Blog Title: <input type="text" name="blog_title"/>
+              <br>
+              <br>
+              Blog Content:<br>
+              <textarea form="blog_upload" name="content"></textarea>
+              <br>
+              <br>
+              <input value="Upload Post" type="submit" name="submit"/>
+            </form>
         </div>
       </div>
       <!-- ============================================================== -->

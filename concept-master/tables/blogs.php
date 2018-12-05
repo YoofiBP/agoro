@@ -5,8 +5,6 @@ if(isset($_SESSION['admin'])){
 }else{
   header('Location:admin_login.php');
 }
-
-include 'insert_form.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -25,10 +23,10 @@ include 'insert_form.php';
   <link rel="stylesheet" href="../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../assets/vendor/charts/c3charts/c3.css">
   <link rel="stylesheet" href="../assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
-  <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+  <title>Agoro Blogs</title>
 </head>
 
-<body>
+<body onload="show_blog();">
   <!-- ============================================================== -->
   <!-- main wrapper -->
   <!-- ============================================================== -->
@@ -38,7 +36,7 @@ include 'insert_form.php';
     <!-- ============================================================== -->
     <div class="dashboard-header">
       <nav class="navbar navbar-expand-lg bg-white fixed-top">
-        <a class="navbar-brand" href="index.php">Agoro</a>
+        <a class="navbar-brand" href="../index.php">Agoro</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -67,7 +65,7 @@ include 'insert_form.php';
     <div class="nav-left-sidebar sidebar-dark">
       <div class="menu-list">
         <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+          <a class="d-xl-none d-lg-none" href="../index.php">Dashboard</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -80,26 +78,26 @@ include 'insert_form.php';
                 <a class="nav-link" href="../index.php">Dashboard</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Tables</a>
+                <a class="nav-link" href="../index.php" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Tables</a>
                 <div id="submenu-2" class="collapse submenu" style="">
                   <ul class="nav flex-column">
                     <li class="nav-item">
-                      <a class="nav-link" href="../tables/brands.php">Brands <span class="badge badge-secondary">New</span></a>
+                      <a class="nav-link" href="brands.php">Brands <span class="badge badge-secondary">New</span></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../tables/categories.php">Categories</a>
+                      <a class="nav-link" href="categories.php">Categories</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../tables/customers.php">Customers</a>
+                      <a class="nav-link" href="customers.php">Customers</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../tables/orders.php">All Orders</a>
+                      <a class="nav-link" href="orders.php">All Orders</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../tables/products.php">Products</a>
+                      <a class="nav-link" href="products.php">Products</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../tables/payment.php">Payment History</a>
+                      <a class="nav-link" href="payments.php">Payment History</a>
                     </li>
                   </ul>
                 </div>
@@ -109,10 +107,10 @@ include 'insert_form.php';
                 <div id="submenu-4" class="collapse submenu" style="">
                   <ul class="nav flex-column">
                     <li class="nav-item">
-                      <a class="nav-link" href="../tables/blogs.php">View Entries</a>
+                      <a class="nav-link" href="blogs.php">View Entries</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="blog_form.php">Add Entry</a>
+                      <a class="nav-link" href="../CRUD/blog_form.php">Add Entry</a>
                     </li>
                   </ul>
                 </div>
@@ -137,7 +135,7 @@ include 'insert_form.php';
           <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <div class="page-header">
-                <h2 class="pageheader-title">All Brands</h2>
+                <h2 class="pageheader-title">All Blogs</h2>
                 <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
                 <div class="page-breadcrumb">
                   <nav aria-label="breadcrumb">
@@ -149,30 +147,15 @@ include 'insert_form.php';
           <!-- ============================================================== -->
           <!-- end pageheader  -->
           <!-- ============================================================== -->
-          <div class="ecommerce-widget" id="brands">
-            <form action="insert_brand.php" method="post" name="brand_insert">
-              Brand Name:<input type="text" name="brand_name"/>
-              <input value="Add Brand" type="submit" name="submit"/>
+          <div class="ecommerce-widget" id="blog">
+
+
         </div>
       </div>
       <!-- ============================================================== -->
       <!-- footer -->
       <!-- ============================================================== -->
       <div class="footer">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-              Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-              <div class="text-md-right footer-links d-none d-sm-block">
-                <a href="javascript: void(0);">About</a>
-                <a href="javascript: void(0);">Support</a>
-                <a href="javascript: void(0);">Contact Us</a>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
       <!-- ============================================================== -->
       <!-- end footer -->
