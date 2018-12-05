@@ -117,3 +117,19 @@ function show_customers(){
   xmlhttp.open("GET","../tables/show_customers.php",true);
   xmlhttp.send();
 }
+
+
+function show_orders(){
+  var xmlhttp;
+    xmlhttp=new XMLHttpRequest();
+
+  xmlhttp.onreadystatechange=function()
+    {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+      {
+      document.getElementById("orders").innerHTML=xmlhttp.responseText;
+      }
+    }
+  xmlhttp.open("GET","../tables/show_orders.php",true);
+  xmlhttp.send();
+}
