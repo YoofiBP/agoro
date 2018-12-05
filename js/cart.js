@@ -73,6 +73,12 @@ function removeItemCart(pid,title) {
 				swal(title+" was "+myObj, {
 				  icon: "success",
 				});
+				$('.cart-img-product').each(function(){
+					$(this).hover(
+					    function(){$(this).find('.mybtn').show();}, // over
+					    function(){$(this).find('.mybtn').hide();}  // out
+					);
+				});
 			}
 		};
 		xhttp.open("GET", "PHP/removeCartItem.php?pid="+pid, true);

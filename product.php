@@ -296,6 +296,7 @@ function redirect_to_pay(){
 	</script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+	<script src="js/agoro.js"></script>
 
 </body>
 </html>

@@ -96,13 +96,6 @@ function redirect_to_pay(){
 						</button>
 					</div>
 				</div>
-
-				<div class="size10 trans-0-4 m-t-10 m-b-10">
-					<!-- Button -->
-					<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-						Remove an item
-					</button>
-				</div>
 			</div>
 
 			<!-- Total -->

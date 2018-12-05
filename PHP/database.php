@@ -232,7 +232,7 @@ class Databases {
 	}
 
 	public function getCategory($index){
-		$sql = "SELECT cat_name FROM categories WHERE cat_id = $index";
+		$sql = "SELECT cat_name FROM categories WHERE cat_id = ".$index;
 		$reslt = mysqli_query($this->conn, $sql);
 		$tt = mysqli_fetch_assoc($reslt)['cat_name'];
 		//print_r ($tt);
@@ -442,18 +442,31 @@ class Databases {
 		return $mr;
 	}
 
-	public function displaySinglePT($myArray){
+	public function displaySingleInfo($myArray){
 		$title = $myArray['product_title'];
-		$category = $this->getCategory($myArray['product_cat']);
 		$price = $myArray['product_price'];
-		echo "<h1>".$title."</h1>
-		<p>".$category."<p>
-		<p class='price'>$".$price."</p>";
+		$cat = $this->getCategory($myArray['product_id']);
+		$price = $myArray['product_price'];
+		echo '<h4 class="product-detail-name m-text16 p-b-13">'.$title.'</h4>
+			<span class="m-text17">GHC 
+				'.$price.'
+			</span>
+
+			<p class="s-text8 p-t-10">
+				'.$cat.'
+			</p>
+		';
 		return;
 	}
 	public function displaySingleDesc($myArray){
 		$description = $myArray['product_desc'];
-		echo "<p>".$description."</p>";
+		echo '
+		<div class="dropdown-content dis-none p-t-15 p-b-23">
+			<p class="s-text8">
+				'.$description.'
+			</p>
+		</div>
+		';
 		return;
 	}
 	public function displaySinglePic($myArray){
@@ -494,7 +507,15 @@ class Databases {
 	}
 	public function displayAdd2CartBTN($myArray){
 		$pid = $myArray['product_id'];
-		echo "<button id='add2cart' value='Add to Cart' onclick='addCartValidate(".$pid.");'>Add to Cart</button>";
+		echo '
+		<div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
+			<!-- Button -->
+			<p id="pid" style="display:none">'.$pid.'</p>
+			<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+				Add to Cart
+			</button>
+		</div>
+		';
 		return;
 	}
 	public function addCustomer($data){
