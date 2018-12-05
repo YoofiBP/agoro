@@ -14,19 +14,19 @@ if(isset($_SESSION['admin'])){
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
-  <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/libs/css/style.css">
-  <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
-  <link rel="stylesheet" href="assets/vendor/charts/chartist-bundle/chartist.css">
-  <link rel="stylesheet" href="assets/vendor/charts/morris-bundle/morris.css">
-  <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="assets/vendor/charts/c3charts/c3.css">
-  <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+  <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/libs/css/style.css">
+  <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+  <link rel="stylesheet" href="../assets/vendor/charts/chartist-bundle/chartist.css">
+  <link rel="stylesheet" href="../assets/vendor/charts/morris-bundle/morris.css">
+  <link rel="stylesheet" href="../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../assets/vendor/charts/c3charts/c3.css">
+  <link rel="stylesheet" href="../assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
   <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
 </head>
 
-<body onload="show_summary();">
+<body onload="show_cats();">
   <!-- ============================================================== -->
   <!-- main wrapper -->
   <!-- ============================================================== -->
@@ -82,22 +82,47 @@ if(isset($_SESSION['admin'])){
                 <div id="submenu-2" class="collapse submenu" style="">
                   <ul class="nav flex-column">
                     <li class="nav-item">
-                      <a class="nav-link" href="tables/brands.php">Brands <span class="badge badge-secondary">New</span></a>
+                      <a class="nav-link" href="brands.php">Brands <span class="badge badge-secondary">New</span></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="tables/categories.php">Categories</a>
+                      <a class="nav-link" href="categories.php">Categories</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="tables/customers.php">Customers</a>
+                      <a class="nav-link" href="customers.php">Customers</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="tables/orders.php">All Orders</a>
+                      <a class="nav-link" href="orders.php">All Orders</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="tables/products.php">Products</a>
+                      <a class="nav-link" href="products.php">Products</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="tables/payments.php">Payment History</a>
+                      <a class="nav-link" href="payment.php">Payment History</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-chart-pie"></i>Insert</a>
+                <div id="submenu-3" class="collapse submenu" style="">
+                  <ul class="nav flex-column">
+                    <li class="nav-item">
+                      <a class="nav-link" href="pages/chart-c3.html">C3 Charts</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="pages/chart-chartist.html">Chartist Charts</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="pages/chart-charts.html">Chart</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="pages/chart-morris.html">Morris</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="pages/chart-sparkline.html">Sparkline</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="pages/chart-gauge.html">Guage</a>
                     </li>
                   </ul>
                 </div>
@@ -157,14 +182,10 @@ if(isset($_SESSION['admin'])){
           <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <div class="page-header">
-                <h2 class="pageheader-title">Summary </h2>
+                <h2 class="pageheader-title">All Categories</h2>
                 <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
                 <div class="page-breadcrumb">
                   <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                      <li class="breadcrumb-item active" aria-current="page">Summary</li>
-                    </ol>
                   </nav>
                 </div>
               </div>
@@ -173,7 +194,7 @@ if(isset($_SESSION['admin'])){
           <!-- ============================================================== -->
           <!-- end pageheader  -->
           <!-- ============================================================== -->
-          <div class="ecommerce-widget" id="summary">
+          <div class="ecommerce-widget" id="cats">
 
 
         </div>
@@ -210,26 +231,26 @@ if(isset($_SESSION['admin'])){
   <!-- ============================================================== -->
   <!-- Optional JavaScript -->
   <!-- jquery 3.3.1 -->
-  <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
-  <script src="../js/ajax_calls.js"></script>
+  <script src="../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+  <script src="../../js/ajax_calls.js"></script>
   <!-- bootstap bundle js -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
   <!-- slimscroll js -->
-  <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+  <script src="../assets/vendor/slimscroll/jquery.slimscroll.js"></script>
   <!-- main js -->
-  <script src="assets/libs/js/main-js.js"></script>
+  <script src="../assets/libs/js/main-js.js"></script>
   <!-- chart chartist js -->
-  <script src="assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+  <script src="../assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
   <!-- sparkline js -->
-  <script src="assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+  <script src="../assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
   <!-- morris js -->
-  <script src="assets/vendor/charts/morris-bundle/raphael.min.js"></script>
-  <script src="assets/vendor/charts/morris-bundle/morris.js"></script>
+  <script src="../assets/vendor/charts/morris-bundle/raphael.min.js"></script>
+  <script src="../assets/vendor/charts/morris-bundle/morris.js"></script>
   <!-- chart c3 js -->
-  <script src="assets/vendor/charts/c3charts/c3.min.js"></script>
-  <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
-  <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
-  <script src="assets/libs/js/dashboard-ecommerce.js"></script>
+  <script src="../assets/vendor/charts/c3charts/c3.min.js"></script>
+  <script src="../assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+  <script src="../assets/vendor/charts/c3charts/C3chartjs.js"></script>
+  <script src="../assets/libs/js/dashboard-ecommerce.js"></script>
 </body>
 
 </html>

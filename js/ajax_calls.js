@@ -87,3 +87,33 @@ function show_brands(){
   xmlhttp.open("GET","../tables/show_brands.php",true);
   xmlhttp.send();
 }
+
+function show_cats(){
+  var xmlhttp;
+    xmlhttp=new XMLHttpRequest();
+
+  xmlhttp.onreadystatechange=function()
+    {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+      {
+      document.getElementById("cats").innerHTML=xmlhttp.responseText;
+      }
+    }
+  xmlhttp.open("GET","../tables/show_cats.php",true);
+  xmlhttp.send();
+}
+
+function show_customers(){
+  var xmlhttp;
+    xmlhttp=new XMLHttpRequest();
+
+  xmlhttp.onreadystatechange=function()
+    {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+      {
+      document.getElementById("cust").innerHTML=xmlhttp.responseText;
+      }
+    }
+  xmlhttp.open("GET","../tables/show_customers.php",true);
+  xmlhttp.send();
+}

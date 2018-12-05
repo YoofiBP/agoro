@@ -5,7 +5,7 @@ include '../../includes/classes/cart.php';
 echo "<div class='row'>
     <div class='col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12'>
       <div class='card'>
-        <h5 class='card-header'>Brands List</h5>
+        <h5 class='card-header'>Categories List</h5>
         <div class='card-body p-0'>
           <div class='table-responsive'>";
 
@@ -20,7 +20,7 @@ echo "<table class='table'>
   </thead>
   <tbody>";
 
-  $sql =  "SELECT * FROM brands";
+  $sql =  "SELECT * FROM categories";
   $cart = new Cart;
   $cart_items = $cart->getCart($sql);
   $str = '';
@@ -29,9 +29,9 @@ echo "<table class='table'>
     $count +=1;
     $str= $str."<tr>
       <td>".$count."</td>
-      <td>".$row['brand_id']."</td>
-      <td>".$row['brand_name']."</td>
-      <td><a href='../CRUD/delete_brand.php?n=".$row['brand_id']."'>Delete</a></td>
+      <td>".$row['cat_id']."</td>
+      <td>".$row['cat_name']."</td>
+      <td><a href='../CRUD/delete_cat.php?n=".$row['cat_id']."'>Delete</a></td>
     </tr>
     ";
 }
@@ -39,7 +39,7 @@ echo "<table class='table'>
 echo $str;
 
 echo "
-<tr><td><a href='../CRUD/insert_brand.php'>Add Brand</a></td></tr>
+<tr><td><a href='../CRUD/insert_cat.php'>Add Category</a></td></tr>
 </div>
 </div>
 </div>
