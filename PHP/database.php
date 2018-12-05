@@ -69,8 +69,8 @@ class Databases {
 		$ipCheck = $_SERVER['REMOTE_ADDR'];
 		$sql = "DELETE FROM cart WHERE p_id = '".$PID."' AND ip_add = '".$ipCheck."'";
 		if($result = mysqli_query($this->conn, $sql)){
-			$this->displayCartItems();
-			$an = "Product successfully removed from cart";
+			//$this->displayCartItems();
+			$an = "successfully removed from cart";
 			return $an;
 		}
 	}
@@ -120,76 +120,94 @@ class Databases {
 		$ipCheck = $_SERVER['REMOTE_ADDR'];
 		$sql = "SELECT p_id,qty FROM cart WHERE ip_add ='".$ipCheck."'";
 		$result = mysqli_query($this->conn, $sql);
-		$cart = mysqli_fetch_all($result,MYSQLI_ASSOC);
-		//print_r($cart);
-		for ($i=0; $i < count($cart); $i++){
-			$itemNum = $i + 1;
-			$cartItem = $cart[$i]; //get a current cart item
-			/*print_r($cartItem);*/
-			/*echo "<br>";
-			echo "<br>";*/
-			$itemID = $cartItem['p_id']; //get the current item's product id
-			/*echo "this is the item ID: ".$itemID;
-			echo "<br>";*/
-			$itemQTY = $cartItem['qty']; //get the current item's quantity
-			/*echo "This is the cart quantity: ".$itemQTY;
-			echo "<br>";*/
-			$productSQL = "SELECT product_image,product_title,product_price FROM products WHERE product_id = ".$itemID;
-			$q1 = mysqli_query($this->conn, $productSQL);
-			$productArray = mysqli_fetch_assoc($q1);
-			$itemTitle = $productArray['product_title'];
-			/*echo $itemTitle;
-			echo "<br>";*/
-			$itemPrice = $productArray['product_price'];
-			$itemSubTotal = $itemPrice * $itemQTY;
-			/*echo $itemPrice;
-			echo "<br>";*/
-			$itemImage = $productArray['product_image'];
-			/*echo $itemImage;
-			echo "<br>";
-			echo "<hr>";*/
-			if ($page == 'other') {
-				echo '
-				  <li class="header-cart-item">
-				  	<div class="header-cart-item-img">
-				  		<img src="'.$itemImage.'" alt="IMG">
-				  	</div>
+		if (mysqli_num_rows($result) > 0) {
+			# code...
+			$cart = mysqli_fetch_all($result,MYSQLI_ASSOC);
+			//print_r($cart);
+			for ($i=0; $i < count($cart); $i++){
+				$itemNum = $i + 1;
+				$cartItem = $cart[$i]; //get a current cart item
+				/*print_r($cartItem);*/
+				/*echo "<br>";
+				echo "<br>";*/
+				$itemID = $cartItem['p_id']; //get the current item's product id
+				/*echo "this is the item ID: ".$itemID;
+				echo "<br>";*/
+				$itemQTY = $cartItem['qty']; //get the current item's quantity
+				/*echo "This is the cart quantity: ".$itemQTY;
+				echo "<br>";*/
+				$productSQL = "SELECT product_image,product_title,product_price FROM products WHERE product_id = ".$itemID;
+				$q1 = mysqli_query($this->conn, $productSQL);
+				$productArray = mysqli_fetch_assoc($q1);
+				$itemTitle = $productArray['product_title'];
+				/*echo $itemTitle;
+				echo "<br>";*/
+				$itemPrice = $productArray['product_price'];
+				$itemSubTotal = $itemPrice * $itemQTY;
+				/*echo $itemPrice;
+				echo "<br>";*/
+				$itemImage = $productArray['product_image'];
+				/*echo $itemImage;
+				echo "<br>";
+				echo "<hr>";*/
+				if ($page == 'other') {
+					echo '
+					  <li class="header-cart-item">
+					  	<div class="header-cart-item-img">
+					  		<img src="'.$itemImage.'" alt="IMG" onclick="removeItemCart('.$itemID.','.$itemTitle.')">
+					  	</div>
 
-				  	<div class="header-cart-item-txt">
-				  		<a href="product-detail.php?p='.$itemID.'" class="header-cart-item-name">'.$itemTitle.'</a>
+					  	<div class="header-cart-item-txt">
+					  		<a href="product-detail.php?p='.$itemID.'" class="header-cart-item-name">'.$itemTitle.'</a>
 
-				  		<span class="header-cart-item-info">'.$itemQTY.' x GHC '.$itemPrice.'</span>
-				  	</div>
-				  </li>
-				  ';
-			}elseif ($page == 'cart') {
-				echo '<tr class="table-row">
-					<td class="column-1">
-						<div class="cart-img-product b-rad-4 o-f-hidden">
-							<img src="'.$itemImage.'" alt="IMG-PRODUCT">
-						</div>
-					</td>
-					<td class="column-2">'.$itemTitle.'</td>
-					<td class="column-3">GHC '.$itemPrice.'</td>
-					<td class="column-4">
-						<div class="flex-w bo5 of-hidden w-size17">
-							<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
-								<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
-							</button>
+					  		<span class="header-cart-item-info">'.$itemQTY.' x GHC '.$itemPrice.'</span>
+					  	</div>
+					  </li>
+					  ';
+				}elseif ($page == 'cart') {
+					echo '<tr class="table-row">
+						<td class="column-1">
+							<div class="cart-img-product b-rad-4 o-f-hidden">
+								<img src="'.$itemImage.'" alt="IMG-PRODUCT" onmouseover="displayRemove('.$itemID.');">
+								<button class="mybtn" id="pr_'.$itemID.'" onclick='."'".'return removeItemCart('.$itemID.','.'"'.$itemTitle.'"'.');'."'".'>
+									<i class="fs-12 fa fa-remove" aria-hidden="true"></i>
+								</button>
+								<p id="pid" style="display:none">'.$itemID.'</p>
+							</div>
+						</td>
+						<td class="column-2 pt">'.$itemTitle.'</td>
+						<td class="column-3">GHC '.$itemPrice.'</td>
+						<td class="column-4">
+							<div class="flex-w bo5 of-hidden w-size17">
+								<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
+									<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
+								</button>
 
-							<input class="size8 m-text18 t-center num-product" type="number" name="num-product1" value="'.$itemQTY.'">
+								<input class="size8 m-text18 t-center num-product" type="number" name="num-product1" value="'.$itemQTY.'">
 
-							<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
-								<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
-							</button>
-						</div>
-					</td>
-					<td class="column-5">GHC '.$itemSubTotal.'</td>
-				</tr>';
+								<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
+									<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
+								</button>
+							</div>
+						</td>
+						<td class="column-5">GHC '.$itemSubTotal.'</td>
+					</tr>';
+				}      
 			}
-            
+			return;
+		}elseif ($page == 'cart'){
+			echo"<tr>
+				<td colspan='5'>
+					<button class='flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4' onclick='location.href = ".'"'."product.php".'"'."'>
+						No items available in your cart. Click here to view product Catalogue
+					</button>
+				</td>
+			</tr>";
+			return;
+		}else{
+			return;
 		}
-		return;
+		
 	}
 	public function getPname($str) {
 		/*check if str is defined first*/

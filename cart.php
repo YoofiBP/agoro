@@ -33,6 +33,7 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <?php
    include 'PHP/database.php';
    $forcart = new Databases;
@@ -43,7 +44,7 @@ function redirect_to_pay(){
 }
 </script>
 </head>
-<body class="animsition" onload="displayCartItems();displayCartSize();displayCartValue()">
+<body class="animsition" onload="displayCartItems();displayCartSize();displayCartValue();">
 
 	<!-- Header -->
   <header class="header1">
@@ -73,10 +74,11 @@ function redirect_to_pay(){
 							<th class="column-4 p-l-70">Quantity</th>
 							<th class="column-5">Total</th>
 						</tr>
-
-						<?php
-						$forcart->displayCartItems('cart');
-						?>
+						<tbody id="cartIT">
+							<?php
+							$forcart->displayCartItems('cart');
+							?>
+						</tbody>
 					</table>
 				</div>
 			</div>
@@ -161,6 +163,7 @@ function redirect_to_pay(){
 	<script type="text/javascript" src="vendor/bootstrap/js/popper.js"></script>
 	<script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
+	<script type="text/javascript" src="vendor/sweetalert/sweetalert.min.js"></script>
 	<script type="text/javascript" src="vendor/select2/select2.min.js"></script>
 	<script type="text/javascript" src="js/cart.js"></script>
 	<script type="text/javascript">
