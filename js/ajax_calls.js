@@ -178,3 +178,18 @@ function show_blog(){
   xmlhttp.open("GET","../tables/show_blog.php",true);
   xmlhttp.send();
 }
+
+function display_blog(){
+  var xmlhttp;
+    xmlhttp=new XMLHttpRequest();
+
+  xmlhttp.onreadystatechange=function()
+    {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+      {
+      document.getElementById("dblog").innerHTML=xmlhttp.responseText;
+      }
+    }
+  xmlhttp.open("GET","includes/templates/show_blog.php",true);
+  xmlhttp.send();
+}

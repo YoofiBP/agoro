@@ -155,7 +155,7 @@ include 'insert_blog.php';
               <br>
               <br>
               Blog Content:<br>
-              <textarea form="blog_upload" name="content" rows="4" cols="50"></textarea>
+              <textarea form="blog_upload" name="content"></textarea>
               <br>
               <br>
               <input value="Upload Post" type="submit" name="submit"/>

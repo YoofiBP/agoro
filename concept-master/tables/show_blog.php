@@ -42,7 +42,7 @@ echo "<table class='table'>
 echo $str;
 
 echo "
-<tr><td><a href='../CRUD/blog_form.php'>Add Brand</a></td></tr>
+<tr><td><a href='../CRUD/blog_form.php'>Add Blog</a></td></tr>
 </div>
 </div>
 </div>

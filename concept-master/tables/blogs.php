@@ -23,7 +23,7 @@ if(isset($_SESSION['admin'])){
   <link rel="stylesheet" href="../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../assets/vendor/charts/c3charts/c3.css">
   <link rel="stylesheet" href="../assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
-  <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+  <title>Agoro Blogs</title>
 </head>
 
 <body onload="show_blog();">
@@ -135,7 +135,7 @@ if(isset($_SESSION['admin'])){
           <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <div class="page-header">
-                <h2 class="pageheader-title">All Brands</h2>
+                <h2 class="pageheader-title">All Blogs</h2>
                 <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
                 <div class="page-breadcrumb">
                   <nav aria-label="breadcrumb">
