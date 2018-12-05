@@ -148,3 +148,18 @@ function show_products(){
   xmlhttp.open("GET","../tables/show_products.php",true);
   xmlhttp.send();
 }
+
+function show_pay(){
+  var xmlhttp;
+    xmlhttp=new XMLHttpRequest();
+
+  xmlhttp.onreadystatechange=function()
+    {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+      {
+      document.getElementById("pay").innerHTML=xmlhttp.responseText;
+      }
+    }
+  xmlhttp.open("GET","../tables/show_payments.php",true);
+  xmlhttp.send();
+}
