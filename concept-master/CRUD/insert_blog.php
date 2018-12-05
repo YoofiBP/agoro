@@ -9,6 +9,6 @@ $date = date("Y/m/d");
 $sql = "INSERT INTO blog (blog_title, blog_content, up_date) VALUES ('$blog_title', '$blog_content', '$date')";
 $cat->getCart($sql);
 
-header('Location: ../tables/categories.php');
+header('Location: ../tables/blogs.php');
 }
  ?>

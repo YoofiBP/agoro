@@ -85,22 +85,22 @@ include 'insert_customer_validation.php';
                 <div id="submenu-2" class="collapse submenu" style="">
                   <ul class="nav flex-column">
                     <li class="nav-item">
-                      <a class="nav-link" href="pages/cards.html">Brands <span class="badge badge-secondary">New</span></a>
+                      <a class="nav-link" href="../tables/brands.php">Brands <span class="badge badge-secondary">New</span></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="pages/general.html">Categories</a>
+                      <a class="nav-link" href="../tables/categories.php">Categories</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="pages/carousel.html">Customers</a>
+                      <a class="nav-link" href="../tables/customers.php">Customers</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="pages/listgroup.html">All Orders</a>
+                      <a class="nav-link" href="../tables/orders.php">All Orders</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="pages/typography.html">Products</a>
+                      <a class="nav-link" href="../tables/products.php">Products</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="pages/accordions.html">Payment History</a>
+                      <a class="nav-link" href="../tables/payment.php">Payment History</a>
                     </li>
                   </ul>
                 </div>

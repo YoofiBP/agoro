@@ -5,8 +5,6 @@ if(isset($_SESSION['admin'])){
 }else{
   header('Location:admin_login.php');
 }
-
-include 'cat_form.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -28,7 +26,7 @@ include 'cat_form.php';
   <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
 </head>
 
-<body>
+<body onload="show_blog();">
   <!-- ============================================================== -->
   <!-- main wrapper -->
   <!-- ============================================================== -->
@@ -38,7 +36,7 @@ include 'cat_form.php';
     <!-- ============================================================== -->
     <div class="dashboard-header">
       <nav class="navbar navbar-expand-lg bg-white fixed-top">
-        <a class="navbar-brand" href="index.php">Agoro</a>
+        <a class="navbar-brand" href="../index.php">Agoro</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -67,7 +65,7 @@ include 'cat_form.php';
     <div class="nav-left-sidebar sidebar-dark">
       <div class="menu-list">
         <nav class="navbar navbar-expand-lg navbar-light">
-          <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+          <a class="d-xl-none d-lg-none" href="../index.php">Dashboard</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -77,54 +75,29 @@ include 'cat_form.php';
                 Menu
               </li>
               <li class="nav-item ">
-                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span></a>
+                <a class="nav-link" href="../index.php">Dashboard</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Tables</a>
+                <a class="nav-link" href="../index.php" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>Tables</a>
                 <div id="submenu-2" class="collapse submenu" style="">
                   <ul class="nav flex-column">
                     <li class="nav-item">
-                      <a class="nav-link" href="../tables/brands.php">Brands <span class="badge badge-secondary">New</span></a>
+                      <a class="nav-link" href="brands.php">Brands <span class="badge badge-secondary">New</span></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../tables/categories.php">Categories</a>
+                      <a class="nav-link" href="categories.php">Categories</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../tables/customers.php">Customers</a>
+                      <a class="nav-link" href="customers.php">Customers</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../tables/orders.php">All Orders</a>
+                      <a class="nav-link" href="orders.php">All Orders</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../tables/products.php">Products</a>
+                      <a class="nav-link" href="products.php">Products</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../tables/payment.php">Payment History</a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fas fa-fw fa-chart-pie"></i>Insert</a>
-                <div id="submenu-3" class="collapse submenu" style="">
-                  <ul class="nav flex-column">
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages/chart-c3.html">C3 Charts</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages/chart-chartist.html">Chartist Charts</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages/chart-charts.html">Chart</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages/chart-morris.html">Morris</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages/chart-sparkline.html">Sparkline</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages/chart-gauge.html">Guage</a>
+                      <a class="nav-link" href="payments.php">Payment History</a>
                     </li>
                   </ul>
                 </div>
@@ -134,32 +107,10 @@ include 'cat_form.php';
                 <div id="submenu-4" class="collapse submenu" style="">
                   <ul class="nav flex-column">
                     <li class="nav-item">
-                      <a class="nav-link" href="pages/form-elements.html">Form Elements</a>
+                      <a class="nav-link" href="pages/form-elements.html">View Entries</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="pages/form-validation.html">Parsely Validations</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages/multiselect.html">Multiselect</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages/datepicker.html">Date Picker</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages/bootstrap-select.html">Bootstrap Select</a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>Tables</a>
-                <div id="submenu-5" class="collapse submenu" style="">
-                  <ul class="nav flex-column">
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages/general-table.html">General Tables</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages/data-tables.html">Data Tables</a>
+                      <a class="nav-link" href="pages/form-validation.html">Add Entry</a>
                     </li>
                   </ul>
                 </div>
@@ -196,31 +147,15 @@ include 'cat_form.php';
           <!-- ============================================================== -->
           <!-- end pageheader  -->
           <!-- ============================================================== -->
-          <div class="ecommerce-widget" id="brands">
-            <form action="insert_cat.php" method="post" name="cat_insert">
-              Category Name:<input type="text" name="cat_name"/>
-              <input value="Add Category" type="submit" name="submit"/>.
-            </form>
+          <div class="ecommerce-widget" id="blog">
+
+
         </div>
       </div>
       <!-- ============================================================== -->
       <!-- footer -->
       <!-- ============================================================== -->
       <div class="footer">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-              Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-              <div class="text-md-right footer-links d-none d-sm-block">
-                <a href="javascript: void(0);">About</a>
-                <a href="javascript: void(0);">Support</a>
-                <a href="javascript: void(0);">Contact Us</a>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
       <!-- ============================================================== -->
       <!-- end footer -->

@@ -110,7 +110,7 @@ if(isset($_SESSION['admin'])){
                       <a class="nav-link" href="pages/form-elements.html">View Entries</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="pages/form-validation.html">Add Entry</a>
+                      <a class="nav-link" href="CRUD/blog_form.php">Add Entry</a>
                     </li>
                   </ul>
                 </div>

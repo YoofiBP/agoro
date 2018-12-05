@@ -17,7 +17,7 @@ session_start();
   VALUES ('$amount','$customer_id','$product_id','$currency','$date')";
   mysqli_query($con,$sql);
   echo "<h1>Payment successful</h1>";
-  echo "<h3>Thank you for shopping with YofShop</h3>";
+  echo "<h3>Thank you for shopping with AGORO</h3>";
 
 //getting customer information from customer table
   $sql_id = "SELECT * FROM customer WHERE customer_id=".$customer_id;
