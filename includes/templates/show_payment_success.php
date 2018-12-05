@@ -10,7 +10,8 @@ session_start();
   $date = $_SESSION['date'];
   $status = '';
   $invoice = mt_rand();
-  $con=mysqli_connect("localhost","root","","agoro");
+  // $con=mysqli_connect("localhost","root","","agoro");
+  $con=mysqli_connect("sql9.freemysqlhosting.net","sql9268188","2H5AdyAzBK","sql9268188");
 
   //inserting into payment table
   $sql = "INSERT INTO payment (amt, customer_id, product_id, currency,payment_date)

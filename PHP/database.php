@@ -1,11 +1,12 @@
-<?php 
+<?php
 /*Emmanuel Nunoo*/
 
 class Databases {
 	public $conn;
 
 	public function __construct(){
-		$this->conn = mysqli_connect("localhost", "root", "", "agoro");
+		// $this->conn = mysqli_connect("localhost", "root", "", "agoro");
+		$this->conn = mysqli_connect("sql9.freemysqlhosting.net","sql9268188","2H5AdyAzBK","sql9268188");
 		if (!$this->conn) {
 			echo "Database Connection Error" . mysqli_connect_error($this->conn);
 			return;
@@ -19,7 +20,7 @@ class Databases {
 			return true;
 		} else {
 			echo mysqli_error($this->conn);
-			return; 
+			return;
 		}
 	}
 	public function add2cart($data){
@@ -41,7 +42,7 @@ class Databases {
 				echo $success_message;
 				return;
 			}
-		}	
+		}
 	}
 	public function getCartSize(){
 		$ipCheck = $_SERVER['REMOTE_ADDR'];
@@ -192,7 +193,7 @@ class Databases {
 						</td>
 						<td class="column-5">GHC '.$itemSubTotal.'</td>
 					</tr>';
-				}      
+				}
 			}
 			return;
 		}elseif ($page == 'cart'){
@@ -207,7 +208,7 @@ class Databases {
 		}else{
 			return;
 		}
-		
+
 	}
 	public function getPname($str) {
 		/*check if str is defined first*/
@@ -217,7 +218,7 @@ class Databases {
 			if (mysqli_num_rows($result) > 0) {
 				$array4JSON = array();
 				while ($row = mysqli_fetch_assoc($result)) {
-					array_push($array4JSON,$row['product_title']); 
+					array_push($array4JSON,$row['product_title']);
 				}
 				$myJSON = json_encode($array4JSON);
 				return $myJSON;
@@ -240,8 +241,8 @@ class Databases {
 		$string = "SELECT product_id,product_cat,product_title,product_price,product_image FROM products";
 		$result = mysqli_query($this->conn, $string);
 		$mray=mysqli_fetch_all($result,MYSQLI_ASSOC);
-		
-		for ($i=0; $i < count($mray); $i++) { 
+
+		for ($i=0; $i < count($mray); $i++) {
 			/*$b = $i+1;*/
 			$pfocus = $mray[$i];
 			$pid = $pfocus['product_id'];
@@ -304,8 +305,8 @@ class Databases {
 		    exit();
 		}
 		$mray=mysqli_fetch_all($result,MYSQLI_ASSOC);
-		
-		for ($i=0; $i < count($mray); $i++) { 
+
+		for ($i=0; $i < count($mray); $i++) {
 			/*$b = $i+1;*/
 			$pfocus = $mray[$i];
 			$pid = $pfocus['product_id'];
@@ -366,7 +367,7 @@ class Databases {
 			$mray=mysqli_fetch_all($result,MYSQLI_ASSOC);
 			//echo 4%3;
 			//print_r($ray[4]);
-			for ($i=0; $i < count($mray); $i++) { 
+			for ($i=0; $i < count($mray); $i++) {
 				$b = $i+1;
 				/*print_r($mray[$i]);
 				echo "<br>";
@@ -507,7 +508,7 @@ class Databases {
 				echo $success_message;
 				return;
 			}
-		}	
+		}
 	}
 }
-?>  
+?>
