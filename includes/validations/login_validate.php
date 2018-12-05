@@ -18,6 +18,11 @@ if (mysqli_num_rows($login) == 1) {
   $_SESSION['email'] = $email;
   $_SESSION['username'] = $username;
 
+  if($id == 1){
+    $_SESSION['admin'] = true;
+  }else{
+    $_SESSION['admin'] = false;
+  }
    if(isset($_SESSION['check'])){
      header('Location: checkout.php');
    }

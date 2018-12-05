@@ -59,8 +59,9 @@ echo "<div class='container-menu-header'>
           </li>";
           if(isset($_SESSION['id'])){
           echo "<li><a href='logout.php'>Logout</a></li>";
+          if($_SESSION['admin']==true){
           echo "<li><a href='insert_product.php'>New</a></li>";
-          }
+        }}
           else{
           echo "<li><a href='login.php'>Login</a></li>";
           echo "<li><a href='registration.php'>Sign Up</a></li>";

@@ -54,7 +54,11 @@ function redirect_to_pay(){
 
 
 	<!-- Title Page -->
+<<<<<<< HEAD
+	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(images/cart.png);">
+=======
 	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(images/cart_banner.png);">
+>>>>>>> 7070726116301c338e231f66cfce7d3977ade98a
 		<h2 class="l-text2 t-center">
 			Cart
 		</h2>
