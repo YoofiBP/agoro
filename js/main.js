@@ -159,7 +159,7 @@
 
     /*[ +/- num product ]
     ===========================================================*/
-    $('.btn-num-product-down').on('click', function(e){
+    /*$('.btn-num-product-down').on('click', function(e){
         e.preventDefault();
         var numProduct = Number($(this).next().val());
         if(numProduct > 1) $(this).next().val(numProduct - 1);
@@ -171,6 +171,21 @@
         $(this).prev().val(numProduct + 1);
     });
 
+    $('.btn-num-product-up').on('click', function(){
+        var numProduct = Number($(this).prev().val());
+        console.log(numProduct);
+        $(this).prev().val(numProduct + 1);
+    });*/
+
+    /*$('.btn-num-product-up').each(function(){
+    var currentV = $(this).parent()find('input').val();
+    var add = 1;
+    var $qty = $(this).find('input').val();
+    $(this).on('click',function(){
+        $(this).parent()find('input').val( function(i, oldval) {
+        return ++oldval;
+        });
+    })*/
 
     /*[ Show content Product detail ]
     ===========================================================*/

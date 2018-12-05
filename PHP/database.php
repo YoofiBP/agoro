@@ -158,7 +158,7 @@ class Databases {
 					  	</div>
 
 					  	<div class="header-cart-item-txt">
-					  		<a href="product-detail.php?p='.$itemID.'" class="header-cart-item-name">'.$itemTitle.'</a>
+					  		<a href="product-detail.php?p='.$itemID.'" class="header-cart-item-name"><a href="product-detail.php?p='.$itemID.'">'.$itemTitle.'<a/a></a>
 
 					  		<span class="header-cart-item-info">'.$itemQTY.' x GHC '.$itemPrice.'</span>
 					  	</div>
@@ -168,27 +168,30 @@ class Databases {
 					echo '<tr class="table-row">
 						<td class="column-1">
 							<div class="cart-img-product b-rad-4 o-f-hidden">
-								<img src="'.$itemImage.'" alt="IMG-PRODUCT" onmouseover="displayRemove('.$itemID.');">
+								<img src="'.$itemImage.'" alt="IMG-PRODUCT">
 								<button class="mybtn" id="pr_'.$itemID.'" onclick='."'".'return removeItemCart('.$itemID.','.'"'.$itemTitle.'"'.');'."'".'>
 									<i class="fs-12 fa fa-remove" aria-hidden="true"></i>
 								</button>
 								<p id="pid" style="display:none">'.$itemID.'</p>
 							</div>
 						</td>
-						<td class="column-2 pt">'.$itemTitle.'</td>
+						<td class="column-2 pt"><a href="product-detail.php?p='.$itemID.'">'.$itemTitle.'</a></td>
 						<td class="column-3">GHC '.$itemPrice.'</td>
 						<td class="column-4">
-							<div class="flex-w bo5 of-hidden w-size17">
+							<p id="currentQTY_'.$itemID.'">'.$itemQTY.'</p>
+							<button id="cbh_'.$itemID.'" onclick="displayChangeQTY('.$itemID.')"><p style="font-size: 10px; text-decoration: underline;">Change item quantity</p></button>
+							<div class="flex-w bo5 of-hidden w-size17" id="editQTY_'.$itemID.'" style="display: none;">
 								<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
 									<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
 								</button>
 
-								<input class="size8 m-text18 t-center num-product" type="number" name="num-product1" value="'.$itemQTY.'">
+								<input class="size8 m-text18 t-center num-product" type="number" id="changeQTY_'.$itemID.'" name="num-product1" value="'.$itemQTY.'">
 
 								<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
 									<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
 								</button>
 							</div>
+							<button id="done_'.$itemID.'" onclick="changeItemQTY('.$itemID.',document.getElementById('."'".'changeQTY_'.$itemID."'".").value);displayCurrentQTY(".$itemID.')" style="display: none;"><p style="font-size: 10px; text-decoration: underline;">Done</p></button>
 						</td>
 						<td class="column-5">GHC '.$itemSubTotal.'</td>
 					</tr>';

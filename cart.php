@@ -54,11 +54,7 @@ function redirect_to_pay(){
 
 
 	<!-- Title Page -->
-<<<<<<< HEAD
-	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(images/cart.png);">
-=======
 	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(images/cart_banner.png);">
->>>>>>> 7070726116301c338e231f66cfce7d3977ade98a
 		<h2 class="l-text2 t-center">
 			Cart
 		</h2>
@@ -75,7 +71,7 @@ function redirect_to_pay(){
 							<th class="column-1"></th>
 							<th class="column-2">Product</th>
 							<th class="column-3">Price</th>
-							<th class="column-4 p-l-70">Quantity</th>
+							<th class="column-4">Quantity</th>
 							<th class="column-5">Total</th>
 						</tr>
 						<tbody id="cartIT">
@@ -104,7 +100,7 @@ function redirect_to_pay(){
 				<div class="size10 trans-0-4 m-t-10 m-b-10">
 					<!-- Button -->
 					<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-						Update Cart
+						Remove an item
 					</button>
 				</div>
 			</div>
