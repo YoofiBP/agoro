@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) { // check if the form is submitted
       $error .= '<p class="error">Enter a valid email address.</p>';
 		}
     $select_emails = "SELECT * FROM customer WHERE customer_email LIKE '%".$email."%'";
-    $con=mysqli_connect("localhost","root","","shoppn");
+    $con=mysqli_connect("localhost","root","","agoro");
     if ($result=mysqli_query($con,$select_emails)){
       $rowcount = mysqli_num_rows($result);
     }
