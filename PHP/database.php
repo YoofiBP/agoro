@@ -5,8 +5,8 @@ class Databases {
 	public $conn;
 
 	public function __construct(){
-		// $this->conn = mysqli_connect("localhost", "root", "", "agoro");
-		$this->conn = mysqli_connect("sql9.freemysqlhosting.net","sql9268188","2H5AdyAzBK","sql9268188");
+		 $this->conn = mysqli_connect("localhost", "root", "", "agoro");
+		//$this->conn = mysqli_connect("sql9.freemysqlhosting.net","sql9268188","2H5AdyAzBK","sql9268188");
 		if (!$this->conn) {
 			echo "Database Connection Error" . mysqli_connect_error($this->conn);
 			return;

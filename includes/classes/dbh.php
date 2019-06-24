@@ -10,15 +10,15 @@ class dbh
 //function to create a database connection
   public function connect()
   {
-    $this->servername = "sql9.freemysqlhosting.net";
-    $this->username = "sql9268188";
-    $this->password = "2H5AdyAzBK";
-    $this->dbname = "sql9268188";
+  //  $this->servername = "sql9.freemysqlhosting.net";
+  //  $this->username = "sql9268188";
+  //  $this->password = "2H5AdyAzBK";
+  //  $this->dbname = "sql9268188";
 
-    // $this->servername = "localhost";
-    // $this->username = "root";
-    // $this->password = "";
-    // $this->dbname = "agoro";
+     $this->servername = "localhost";
+     $this->username = "root";
+     $this->password = "";
+     $this->dbname = "agoro";
 
 
     $conn = new mysqli($this->servername, $this->username,$this->password,$this->dbname);

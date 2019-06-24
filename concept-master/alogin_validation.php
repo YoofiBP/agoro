@@ -3,8 +3,8 @@
 $error = '';
 session_start();
 if (isset($_POST['submit'])) {
-// $con=mysqli_connect("localhost","root","","agoro");.
-$con=mysqli_connect("sql9.freemysqlhosting.net","sql9268188","2H5AdyAzBK","sql9268188");
+$con=mysqli_connect("localhost","root","","agoro");
+//$con=mysqli_connect("sql9.freemysqlhosting.net","sql9268188","2H5AdyAzBK","sql9268188");
 $sql = "SELECT * FROM customer WHERE (customer_email = '" . mysql_real_escape_string($_POST['email']) . "') and (customer_pass = '" . mysql_real_escape_string($_POST['password']) . "') and (customer_id = 1)";
 $login = mysqli_query($con,$sql);
 if (mysqli_num_rows($login) == 1) {
